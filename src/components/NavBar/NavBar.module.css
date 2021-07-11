@@ -1,0 +1,46 @@
+.nav {
+    grid-area: n;
+    background-color: steelblue;
+    padding: 80px 50px 10px 50px;
+
+}
+
+.item {
+    font-size: large;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: gold;
+}
+
+.item.settings {
+    margin: 40px 0 0 0;
+}
+
+.item.friends {
+    color: white;
+    font-size: large;
+}
+
+.navMargin {
+    padding: 10px 20px 30px 20px;
+}
+
+.users{
+    font-size: large;
+    padding: 10px 10px 100px 10px;
+}
+
+.users a{
+    text-decoration: none;
+    color: white;
+}
+
+.users a.activeLink {
+    color: gold;
+}

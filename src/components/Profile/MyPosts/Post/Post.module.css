@@ -1,0 +1,17 @@
+.item {
+    color: black;
+    grid-area: postitem;
+    padding: 20px 20px 5px;
+    background-color: skyblue;
+    border: 3px solid white;
+    margin: 20px 100px 20px 10px;
+}
+
+.item img {
+    width: 50px;
+    border-radius: 20px;
+}
+
+.like {
+    padding-left: 200px;
+}

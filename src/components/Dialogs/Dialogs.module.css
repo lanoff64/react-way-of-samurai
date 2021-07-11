@@ -1,0 +1,63 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.usersDialogs {
+    padding: 10px;
+}
+
+.user a {
+    color: orange;
+    text-decoration: none;
+}
+
+.user a.activeLink {
+    color: blue;
+}
+
+.user {
+    margin: 2px;
+    padding: 1px 1px 30px;
+    grid-area: oneUser;
+}
+
+.oneMessage {
+    margin-top: 25px;
+    padding: 1px 1px 30px;
+}
+
+.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.name {
+    margin-left: 60px;
+    margin-top: -50px;
+}
+
+.messages {
+    margin-top: 50px;
+
+}
+
+.messages .other {
+    padding: 15px 1px 15px 10px;
+    background-color: skyblue;
+    width: 200px;
+    border-radius: 40px;
+}
+
+.answer {
+    margin-left: 300px;
+    margin-top: -600px;
+}
+
+.inputMessage {
+    margin-left: 50px;
+    padding: 20px;
+
+}
