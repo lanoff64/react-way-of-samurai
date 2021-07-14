@@ -12,7 +12,7 @@ import NavBarContainer from "./components/NavBar/NavBarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
 
-const App = (props) => {
+const App = () => {
     return (
 
         <div className='app-wrapper'>

@@ -15,16 +15,19 @@ import * as axios from "axios";
 
 class UsersConnectAPI extends React.Component {
     componentDidMount() {
+        this.props.toggleIsFetch(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pagesSize}`).then(response => {
+            this.props.toggleIsFetch(false);
             this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount - 13200)
+            this.props.setTotalUsersCount(response.data.totalCount - 12200)
         })
     }
 
    onPageClick = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-
+       this.props.toggleIsFetch(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pagesSize}`).then(response => {
+            this.props.toggleIsFetch(false);
             this.props.setUsers(response.data.items)
         })
 

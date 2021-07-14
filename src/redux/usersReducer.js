@@ -7,7 +7,7 @@ const TOGGLE_IS_FETCH = "TOGGLE_IS_FETCH";
 
 let initialState = {
     users: [ ],
-    pagesSize: 10,
+    pagesSize: 100,
     totalUsersCount: 0,
     currentPage:1,
     isFetch: false,
@@ -55,6 +55,14 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.totalUsersCount
             }
+
+        }
+        case TOGGLE_IS_FETCH: {
+            return {
+                ...state,
+                isFetch: action.isFetch
+            }
+
         }
         default:
             return state;
