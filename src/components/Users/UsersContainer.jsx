@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
-import preloader from "../../assets/images/preloader.gif"
 import {
     followAC,
     setCurrentPageAC,
@@ -10,6 +9,7 @@ import {
     unfollowAC
 } from "../../redux/usersReducer";
 import * as axios from "axios";
+import Preloader from "../commons/Preloader/Preloader";
 
 
 
@@ -36,7 +36,7 @@ class UsersConnectAPI extends React.Component {
 
     render() {
         return ( <>
-                {this.props.isFetch ? <img src={preloader}/> : null }
+                {this.props.isFetch ? <Preloader/> : null }
             <Users totalUsersCount={this.props.totalUsersCount}
                    pagesSize={this.props.pagesSize}
                    currentPage={this.props.currentPage}
