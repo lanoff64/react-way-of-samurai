@@ -7,8 +7,8 @@
                          "n c";
 
 
-    grid-template-rows: 70px 5fr;
-    grid-template-columns: auto 9fr;
+    grid-template-rows: 70px;
+    grid-template-columns: 200px auto;
     grid-gap: 5px;
 
 
@@ -17,4 +17,5 @@
 .app-wrapper-content {
     grid-area: c;
     background-color: white;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
 }

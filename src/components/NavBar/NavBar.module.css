@@ -1,6 +1,7 @@
 .nav {
     grid-area: n;
     background-color: steelblue;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3) inset;
     padding: 80px 50px 10px 50px;
 
 }

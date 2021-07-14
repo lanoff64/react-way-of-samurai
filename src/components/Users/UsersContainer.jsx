@@ -19,7 +19,7 @@ class UsersConnectAPI extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pagesSize}`).then(response => {
             this.props.toggleIsFetch(false);
             this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount - 12200)
+            this.props.setTotalUsersCount(response.data.totalCount -10000)
         })
     }
 

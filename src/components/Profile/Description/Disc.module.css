@@ -6,6 +6,7 @@
     grid-gap: 2px;
     background-color: steelblue;
     padding: 5px;
+
 }
 
 
@@ -26,6 +27,7 @@
 .about {
     grid-area: about;
     background-color: steelblue;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .divDesc {

@@ -1,8 +1,8 @@
 
 .header {
     grid-area: h;
-    background-color: lightskyblue;
-
+    background:url("https://img.freepik.com/free-vector/set-of-different-cartoon-clouds-isolated-on-blue-sky_42875-591.jpg?size=626&ext=jpg");
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
 }
 
 .header img {

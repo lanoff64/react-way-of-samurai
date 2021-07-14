@@ -23,6 +23,7 @@ const MyPosts = (props) => {
     return (
         <div className={classes.mypost}>
             <div>
+                <div className={classes.labelMyPost}>
                 <div><h3>My posts</h3></div>
                 <div>
                     <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
@@ -33,8 +34,9 @@ const MyPosts = (props) => {
                         onAddPost()
                     }}> Add post
                     </button>
-
                 </div>
+                </div>
+
             </div>
             <div className={classes.divPost}>
                 {mapPostsData}

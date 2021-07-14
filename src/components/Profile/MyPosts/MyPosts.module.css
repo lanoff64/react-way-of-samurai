@@ -1,8 +1,10 @@
 .mypost {
     padding-top: 20px;
+
 }
 
 .divPost {
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3) inset;
     background-color: steelblue;
     /*border: 1px solid black;*/
     margin-top: 50px;
@@ -10,4 +12,8 @@
     padding-top: 10px;
     padding-bottom: 5px;
     width: 600px;
+}
+.labelMyPost{
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    padding: 10px 0 10px 20px;
 }
