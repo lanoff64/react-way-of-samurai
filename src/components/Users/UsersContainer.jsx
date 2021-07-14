@@ -1,7 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
-import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "../../redux/usersReducer";
+import preloader from "../../assets/images/preloader.gif"
+import {
+    followAC,
+    setCurrentPageAC,
+    setTotalUsersCountAC,
+    setUsersAC, toggleIsFetchAC,
+    unfollowAC
+} from "../../redux/usersReducer";
 import * as axios from "axios";
 
 
@@ -25,14 +32,16 @@ class UsersConnectAPI extends React.Component {
 
 
     render() {
-        return (
+        return ( <>
+                {this.props.isFetch ? <img src={preloader}/> : null }
             <Users totalUsersCount={this.props.totalUsersCount}
                    pagesSize={this.props.pagesSize}
                    currentPage={this.props.currentPage}
                    onPageClick={this.onPageClick}
                    users={this.props.users}
-                   unfollow={this.props.unfollow}
-                   follow={this.props.follow}/>
+                   onFollow={this.props.onFollow}
+                   unfollow={this.props.unfollow}/>
+            </>
 
         );
     }
@@ -45,7 +54,8 @@ let mapStateToProps = (state) => {
         users:state.usersPage.users,
         pagesSize: state.usersPage.pagesSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetch: state.usersPage.isFetch
     }
 }
 
@@ -65,6 +75,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalUsersCount:(totalUsers)=>{
             dispatch(setTotalUsersCountAC(totalUsers));
+        },
+        toggleIsFetch:(isFetch)=>{
+            dispatch(toggleIsFetchAC(isFetch));
         }
     }
 }
