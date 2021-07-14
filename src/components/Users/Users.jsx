@@ -4,41 +4,44 @@ import UserPhoto from "../../assets/images/user.png"
 
 const Users = (props) => {
 
-        let pagesCount = Math.ceil(props.totalUsersCount / props.pagesSize);
-        let pages = [];
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pagesSize);
 
-        for(let i = 1; i<=pagesCount;i++){
-            pages.push(i);
-        }
+    let pages = [];
 
-        return (
-            <div>
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
+    }
 
-                <div className={classes.pages}>
-                    {pages.map(p => {
-                        return <span className={ props.currentPage === p && classes.selectedPage}
-                        onClick={(event)=>{
-                                props.onPageClick(p);
-                        } }>{p}</span>
-                    })}
-                </div>
-                <div className={classes.usersList}>
+    return (
+        <div>
+
+            <div className={classes.pages}>
+                {pages.map(p => {
+                    return <span
+                        className={props.currentPage === p ? classes.selectedPage : undefined}
+                        key={p.toString()}
+                        onClick={(event) => {
+                            props.onPageClick(p);
+                        }}>{p}</span>
+                })}
+            </div>
+            <div className={classes.usersList}>
                 {
-                    props.users.map(u => <div className={classes.oneUser} key={u}>
-                    <div>
-                        <div><img src={u.photos.small != null ? u.photos.small : UserPhoto}
-                                  className={classes.avatarURL} alt=""/></div>
+                    props.users.map(u => <div className={classes.oneUser} key={u.id}>
                         <div>
-                            {
-                                u.follow ? <button onClick={() => {
-                                    props.unfollow(u.id)
-                                }}>Follow</button> : <button onClick={() => {
-                                    props.onFollow(u.id)
-                                }}>Unfollow</button>
-                            }
-                        </div>
+                            <div><img src={u.photos.small != null ? u.photos.small : UserPhoto}
+                                      className={classes.avatarURL} alt=""/></div>
+                            <div>
+                                {
+                                    u.follow ? <button onClick={() => {
+                                        props.unfollow(u.id)
+                                    }}>Follow</button> : <button onClick={() => {
+                                        props.onFollow(u.id)
+                                    }}>Unfollow</button>
+                                }
+                            </div>
 
-                    </div>
+                        </div>
 
                         <span>
                         <span>
@@ -58,10 +61,10 @@ const Users = (props) => {
                     </span>
                     </div>)
                 }
-                </div>
             </div>
+        </div>
 
-        );
+    );
 
 }
 
