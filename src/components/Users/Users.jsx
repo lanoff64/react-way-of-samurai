@@ -14,7 +14,7 @@ const Users = (props) => {
         return (
             <div>
 
-                <div>
+                <div className={classes.pages}>
                     {pages.map(p => {
                         return <span className={ props.currentPage === p && classes.selectedPage}
                         onClick={(event)=>{
@@ -22,9 +22,10 @@ const Users = (props) => {
                         } }>{p}</span>
                     })}
                 </div>
+                <div className={classes.usersList}>
                 {
-                    props.users.map(u => <div key={u}>
-                    <span>
+                    props.users.map(u => <div className={classes.oneUser} key={u}>
+                    <div>
                         <div><img src={u.photos.small != null ? u.photos.small : UserPhoto}
                                   className={classes.avatarURL} alt=""/></div>
                         <div>
@@ -37,7 +38,7 @@ const Users = (props) => {
                             }
                         </div>
 
-                    </span>
+                    </div>
 
                         <span>
                         <span>
@@ -57,6 +58,7 @@ const Users = (props) => {
                     </span>
                     </div>)
                 }
+                </div>
             </div>
 
         );

@@ -4,7 +4,7 @@ import React from "react";
 const Preloader = () => {
     return (
         <div className={classes.preloader}>
-            <div className={classes.spinner}></div>
+            <div className={classes.spinner}>{" "}</div>
         </div>
     );
 }
