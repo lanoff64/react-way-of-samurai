@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Disc.module.css';
 import Preloader from "../../commons/Preloader/Preloader";
+import UserPhoto from "./../../../assets/images/no-user-26.jpg"
 
 const Description = (props) => {
     if (!props.profile) {
@@ -10,11 +11,11 @@ const Description = (props) => {
     return (
         <div className={classes.avaAndDesc}>
             <div className={classes.ava}>
-                <img src={props.profile.photos.large}
-                     alt={"avatar"}/>
+                <img src={props.profile.photos.large ? props.profile.photos.large: UserPhoto}/>
             </div>
             <div className={classes.about}>
                 <div className={classes.userDecsName}>{props.profile.fullName}</div>
+                <div className={classes.divDescLabel}>ID: {props.profile.userId}</div>
                 <div className={classes.divDesc}>
                     <div><span className={classes.divDescLabel}>О себе:</span> {props.profile.aboutMe}</div>
                     <div><span
