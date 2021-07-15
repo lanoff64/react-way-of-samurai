@@ -55,7 +55,9 @@ const Users = (props) => {
 
 
                         <div className={classes.userStatusArea}>
-                             {u.status != null ? u.status : null }
+
+                              { u.status != null ? u.status : null }
+
                         </div>
                             </div>
 
