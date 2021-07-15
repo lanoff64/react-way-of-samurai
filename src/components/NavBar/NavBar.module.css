@@ -30,6 +30,8 @@
 
 .navMargin {
     padding: 10px 20px 30px 20px;
+    box-shadow: 0 0 80px rgba(210, 243, 241, 0.2) inset;
+
 }
 
 .users{
@@ -45,3 +47,4 @@
 .users a.activeLink {
     color: gold;
 }
+

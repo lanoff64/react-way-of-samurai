@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Users.module.css'
-import UserPhoto from "../../assets/images/user.png"
+import UserPhoto from "../../assets/images/no-user-26.jpg"
 
 const Users = (props) => {
 
@@ -14,7 +14,9 @@ const Users = (props) => {
 
     return (
         <div>
-
+            <div className={classes.samurai}>
+                Users from <a href="https://social-network.samuraijs.com/">social-network.samuraijs.com</a>
+            </div>
             <div className={classes.pages}>
                 {pages.map(p => {
                     return <span
@@ -33,9 +35,9 @@ const Users = (props) => {
                                       className={classes.avatarURL} alt=""/></div>
                             <div>
                                 {
-                                    u.follow ? <button onClick={() => {
+                                    u.follow ? <button className={classes.userButton} onClick={() => {
                                         props.unfollow(u.id)
-                                    }}>Follow</button> : <button onClick={() => {
+                                    }}>Follow</button> : <button className={classes.userButton} onClick={() => {
                                         props.onFollow(u.id)
                                     }}>Unfollow</button>
                                 }
@@ -43,21 +45,20 @@ const Users = (props) => {
 
                         </div>
 
-                        <span>
-                        <span>
-                            <div>
+                            <div className={classes.userInfo}>
+                            <div className={classes.userNameArea}>
                                 Name: {u.name}
                             </div>
                             <div>
-                                <div>id:{u.id}</div>
+                                <div className={classes.userIdArea}>id:{u.id}</div>
                             </div>
-                        </span>
-                    <span>
-                        <div>
-                            Status: {u.status}
+
+
+                        <div className={classes.userStatusArea}>
+                             {u.status != null ? u.status : null }
                         </div>
-                    </span>
-                    </span>
+                            </div>
+
                     </div>)
                 }
             </div>

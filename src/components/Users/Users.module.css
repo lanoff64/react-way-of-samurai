@@ -1,11 +1,14 @@
 .avatarURL {
     width: 100px;
     height: 100px;
+    background-color: rgba(210, 243, 241, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .selectedPage{
     font-weight: bold;
     font-size: 20px;
+    color: blue;
 }
 .pages{
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
@@ -27,4 +30,37 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     max-width: 200px;
     text-align: center;
+    background-color: lightgrey;
+}
+.userNameArea{
+    background-color: ghostwhite;
+    margin: 2px 0 10px 0;
+}
+.userIdArea{
+    background-color: lightgray;
+    margin: 3px 0;
+}
+.userStatusArea{
+    background-color: lightskyblue;
+    margin: 3px 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    min-height: 10px;
+}
+
+.userButton{
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    }
+
+.userInfo{
+     margin: 10px 0 0 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.samurai{
+    margin: 20px 20px;
 }
