@@ -26,14 +26,35 @@
 
 .about {
     grid-area: about;
-    background-color: steelblue;
+    background-color: white;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
-}
 
+}
 .divDesc {
     /*background-color: skyblue;*/
-    margin: 15px 25px 5px 1px;
-    border: 2px solid white;
-    color: white;
+    margin: 0 auto;
+    color: black;
     padding: 10px;
+    font-size: 15px;
+}
+
+.divDescLabel{
+    color: grey;
+    margin: 0 0 0 0;
+}
+.userDecsName{
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 10px lightskyblue inset;
+    padding: 10px;
+    text-shadow: 0 2px 0 gold;
+}
+.descLinks{
+    font-style: italic;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }

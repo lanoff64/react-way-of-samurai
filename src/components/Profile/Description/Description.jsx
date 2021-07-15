@@ -1,20 +1,56 @@
 import React from "react";
 import classes from './Disc.module.css';
+import Preloader from "../../commons/Preloader/Preloader";
 
-const Description = () => {
+const Description = (props) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
+
     return (
         <div className={classes.avaAndDesc}>
             <div className={classes.ava}>
-                <img src='https://cdn.cnn.com/cnnnext/dam/assets/190517103414-01-grumpy-cat-file-restricted.jpg'
+                <img src={props.profile.photos.large}
                      alt={"avatar"}/>
             </div>
             <div className={classes.about}>
+                <div className={classes.userDecsName}>{props.profile.fullName}</div>
                 <div className={classes.divDesc}>
-                    <span>Description</span>
-                    <div>age</div>
-                    <div>city</div>
-                    <div>education</div>
-                    <div>hobbies</div>
+                    <div><span className={classes.divDescLabel}>О себе:</span> {props.profile.aboutMe}</div>
+                    <div><span
+                        className={classes.divDescLabel}>Ищет работу:</span> {props.profile.lookingForAJobDescription}
+                    </div>
+                    <div><span className={classes.divDescLabel}>Links:</span>
+                        <div className={classes.descLinks}>
+                            <div>
+                                {props.profile.contacts.facebook}
+                            </div>
+                            <div>
+                                {props.profile.contacts.website}
+                            </div>
+                            <div>
+                                {props.profile.contacts.vk}
+                            </div>
+                            <div>
+                                {props.profile.contacts.twitter}
+                            </div>
+                            <div>
+                                {props.profile.contacts.instagram}
+                            </div>
+                            <div>
+                                {props.profile.contacts.youtube}
+                            </div>
+                            <div>
+                                {props.profile.contacts.github}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span className={classes.divDescLabel}>
+                            Phone:
+                        </span>
+                        {props.profile.lookingForAJob ? '88005553535':'скрыто'}
+                    </div>
 
 
                 </div>

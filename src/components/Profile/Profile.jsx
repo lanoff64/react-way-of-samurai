@@ -11,7 +11,7 @@ const Profile = (props) => {
         <div>
             <Wallpaper/>
             <div className={classes.afterWall}>
-                <Description/>
+                <Description profile={props.profile}/>
                 <MyPostsContainer/>
             </div>
 
