@@ -11,7 +11,7 @@ const Description = (props) => {
     return (
         <div className={classes.avaAndDesc}>
             <div className={classes.ava}>
-                <img src={props.profile.photos.large ? props.profile.photos.large: UserPhoto}/>
+                <img src={props.profile.photos.large ? props.profile.photos.large: UserPhoto} alt="avatar"/>
             </div>
             <div className={classes.about}>
                 <div className={classes.userDecsName}>{props.profile.fullName}</div>
