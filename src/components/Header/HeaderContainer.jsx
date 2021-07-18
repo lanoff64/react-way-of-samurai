@@ -3,22 +3,19 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import * as axios from "axios";
 import {setAuthUser, setCurrentUserInfo} from "../../redux/authReducer";
+import {usersAPI} from "../../api/api";
 
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
-
+        usersAPI.authMe()
             .then(response => {
 
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     this.props.setAuthUser(id, email, login);
-                    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + 2)
+                    usersAPI.getProfile(2)//hardCode userId, cause no-info of my profile
                         .then(response => {
-
                             this.props.setCurrentUserInfo(response.data)
                         })
                 }
