@@ -6,7 +6,24 @@ import UserPhoto from "../../assets/images/no-user-26.jpg";
 
 const Header = (props) => {
     if (!props.profile) {
-        return <Preloader/>
+        return  (
+            <header className={classes.header}>
+                <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/social-connection-7-771032.png' alt='logo'/>
+
+                <div className={classes.loginBlock}>
+
+                    {props.isAuth ?
+                        ( props.login )
+                        :<NavLink to={"/login"}>Login</NavLink>
+                    }
+                    <div className={classes.avaLogin}>
+                        <img src={UserPhoto} alt="avatar"/>
+                    </div>
+                </div>
+
+
+            </header>
+        )
     }
     debugger
     return (
