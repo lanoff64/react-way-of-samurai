@@ -11,7 +11,9 @@ import Preloader from "../commons/Preloader/Preloader";
 class UsersConnectAPI extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetch(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pagesSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pagesSize}`,{
+            withCredentials: true
+        }).then(response => {
             this.props.toggleIsFetch(false);
             this.props.setUsers(response.data.items)
             this.props.setTotalUsersCount(response.data.totalCount - 10000)
@@ -21,7 +23,9 @@ class UsersConnectAPI extends React.Component {
     onPageClick = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetch(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pagesSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pagesSize}`,{
+            withCredentials: true
+        }).then(response => {
             this.props.toggleIsFetch(false);
             this.props.setUsers(response.data.items)
         })
