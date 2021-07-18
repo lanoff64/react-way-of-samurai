@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './Header.module.css';
 import {NavLink} from "react-router-dom";
-import Preloader from "../commons/Preloader/Preloader";
+//import Preloader from "../commons/Preloader/Preloader";
 import UserPhoto from "../../assets/images/no-user-26.jpg";
 
 const Header = (props) => {
@@ -25,7 +25,7 @@ const Header = (props) => {
             </header>
         )
     }
-    debugger
+
     return (
         <header className={classes.header}>
             <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/social-connection-7-771032.png' alt='logo'/>
