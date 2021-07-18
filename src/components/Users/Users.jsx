@@ -40,6 +40,7 @@ const Users = (props) => {
                                 </NavLink>
                             </div>
                             <div>
+
                                 {u.followed ?
                          <button className={classes.userButton} onClick={() => {
                              axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
@@ -49,10 +50,10 @@ const Users = (props) => {
                                  }
                              }).then(response => {
                                  if(response.data.resultCode === 0){
-                                     props.onFollow(u.id)
+                                     props.unfollow(u.id)
                                  }
                              })
-                             props.unfollow(u.id)
+
 
                          }}>Unfollow</button> :
                          <button className={classes.userButton} onClick={() => {
