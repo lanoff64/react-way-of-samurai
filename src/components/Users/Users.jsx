@@ -64,7 +64,7 @@ const Users = (props) => {
                                  }
                              }).then(response => {
                                  if(response.data.resultCode === 0){
-                                     props.onFollow(u.id)
+                                     props.follow(u.id)
                                  }
                              })
 

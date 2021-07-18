@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-     onFollow, setCurrentPage,setTotalUsersCount,setUsers,toggleIsFetch, unfollow
+     follow, setCurrentPage,setTotalUsersCount,setUsers,toggleIsFetch, unfollow
     } from "../../redux/usersReducer";
 import * as axios from "axios";
 import Preloader from "../commons/Preloader/Preloader";
@@ -41,7 +41,7 @@ class UsersConnectAPI extends React.Component {
                        currentPage={this.props.currentPage}
                        onPageClick={this.onPageClick}
                        users={this.props.users}
-                       onFollow={this.props.onFollow}
+                       follow={this.props.follow}
                        unfollow={this.props.unfollow}/>
             </>
 
@@ -63,7 +63,7 @@ let mapStateToProps = (state) => {
 
 
 const UsersContainer = connect(mapStateToProps, {
-        onFollow,
+        follow,
         unfollow,
         setUsers,
         setCurrentPage,
