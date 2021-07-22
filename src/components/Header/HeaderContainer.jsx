@@ -13,7 +13,7 @@ class HeaderContainer extends React.Component {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     this.props.setAuthUser(id, email, login);
-                    usersAPI.getProfile(2)//hardCode userId, cause no-info of my profile
+                    usersAPI.getProfile(id)//hardCode userId, cause no-info of my profile
                         .then(response => {
                             this.props.setCurrentUserInfo(response.data)
                         })
