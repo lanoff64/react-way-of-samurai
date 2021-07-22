@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import UserPhoto from "../../assets/images/no-user-26.jpg";
 
 const Header = (props) => {
+
     if (!props.profile) {
         return  (
             <header className={classes.header}>

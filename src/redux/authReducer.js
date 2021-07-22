@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const AUTH_USER_DATA = "AUTH_USER_DATA";
 const PROFILE_INFO = "PROFILE_INFO";
 
@@ -35,5 +37,26 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUser = (id,email,login) => ({type:AUTH_USER_DATA,data:{id,email,login} });
 export const setCurrentUserInfo = (profile) => ({type:PROFILE_INFO, profile });
 
+
+
+export const authMeThunk = () => {
+
+    return(dispatch) =>{
+
+        usersAPI.authMe()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, email, login} = response.data.data;
+                    dispatch(setAuthUser(id, email, login));
+                    usersAPI.getProfile(id)//hardCode userId, cause no-info of my profile
+                        .then(response => {
+                            dispatch(setCurrentUserInfo(response.data));
+                        })
+                }
+
+            })
+
+    }
+}
 
 export default authReducer;
