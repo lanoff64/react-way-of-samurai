@@ -13,10 +13,8 @@ const Header = (props) => {
 
                 <div className={classes.loginBlock}>
 
-                    {props.isAuth ?
-                        ( props.login )
-                        :<NavLink to={"/login"}>Login</NavLink>
-                    }
+                    <NavLink to={"/login"}>Login</NavLink>
+
                     <div className={classes.avaLogin}>
                         <img src={UserPhoto} alt="avatar"/>
                     </div>
@@ -32,11 +30,7 @@ const Header = (props) => {
             <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/social-connection-7-771032.png' alt='logo'/>
 
             <div className={classes.loginBlock}>
-
-                {props.isAuth ?
-                    ( props.login )
-                    :<NavLink to={"/login"}>Login</NavLink>
-                }
+                {props.login}
                 <div className={classes.avaLogin}>
                     <img src={props.profile.photos.small ? props.profile.photos.small: UserPhoto} alt="avatar"/>
                 </div>

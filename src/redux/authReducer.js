@@ -48,7 +48,7 @@ export const authMeThunk = () => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     dispatch(setAuthUser(id, email, login));
-                    usersAPI.getProfile(id)//hardCode userId, cause no-info of my profile
+                    usersAPI.getProfile(2)//my id or may past hardCode userId, cause no-info of my profile
                         .then(response => {
                             dispatch(setCurrentUserInfo(response.data));
                         })
