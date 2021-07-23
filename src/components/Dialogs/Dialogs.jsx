@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css'
 import Mesage from "./Mesage/Mesage";
 import UserDialog from "./UserDialog/UserDialog";
 import AnswerMessage from "./AnswerMessage/AnswerMessage";
+import {Redirect} from "react-router-dom";
 
 
 
@@ -28,6 +29,7 @@ const Dialogs = (props) => {
         props.updateMessageText(text);
     }
 
+    if(!props.isAuth) return <Redirect to='/login'/>
     return (
         <div>
             <div className={classes.dialogs}>
