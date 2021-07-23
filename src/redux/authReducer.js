@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {authAPI, usersAPI} from "../api/api";
 
 const AUTH_USER_DATA = "AUTH_USER_DATA";
 const PROFILE_INFO = "PROFILE_INFO";
@@ -43,7 +43,7 @@ export const authMeThunk = () => {
 
     return(dispatch) =>{
 
-        usersAPI.authMe()
+        authAPI.me()
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
