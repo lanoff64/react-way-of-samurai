@@ -3,8 +3,6 @@ import classes from './Dialogs.module.css'
 import Mesage from "./Mesage/Mesage";
 import UserDialog from "./UserDialog/UserDialog";
 import AnswerMessage from "./AnswerMessage/AnswerMessage";
-import {Redirect} from "react-router-dom";
-
 
 
 const Dialogs = (props) => {
@@ -13,12 +11,10 @@ const Dialogs = (props) => {
         <UserDialog name={dialog.name} key={dialog.id} id={dialog.id} avatar={dialog.avatar}/>);
 
     let mapMessages = props.dialogsPage.messageState.map(textMessage =>
-        <Mesage message={textMessage.message} key={textMessage.id} />);
+        <Mesage message={textMessage.message} key={textMessage.id}/>);
 
     let mapAnswerMessage = props.dialogsPage.answerState.map(textMessageA =>
-        <AnswerMessage message={textMessageA.message} key={textMessageA.id} />);
-
-
+        <AnswerMessage message={textMessageA.message} key={textMessageA.id}/>);
 
 
     let onSend = () => {
@@ -29,7 +25,6 @@ const Dialogs = (props) => {
         props.updateMessageText(text);
     }
 
-    if(!props.isAuth) return <Redirect to='/login'/>
     return (
         <div>
             <div className={classes.dialogs}>
@@ -44,7 +39,8 @@ const Dialogs = (props) => {
             <div className={classes.answer}>
                 {mapAnswerMessage}
                 <div className={classes.inputMessage}>
-                    <textarea placeholder={'Enter your message'} onChange={onMessageChange} value={props.dialogsPage.messageForSend} />
+                    <textarea placeholder={'Enter your message'} onChange={onMessageChange}
+                              value={props.dialogsPage.messageForSend}/>
 
                     <div>
                         <button onClick={onSend}>Send message</button>
