@@ -31,9 +31,12 @@ const Header = (props) => {
 
             <div className={classes.loginBlock}>
                 {props.login}
+
+
                 <div className={classes.avaLogin}>
                     <img src={props.profile.photos.small ? props.profile.photos.small: UserPhoto} alt="avatar"/>
                 </div>
+                <div> {props.id}</div>
             </div>
 
 
