@@ -3,6 +3,7 @@ import classes from './Profile.module.css';
 import Description from "./Description/Description";
 import Wallpaper from "./Wallpaper/Wallpaper";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 
 const Profile = (props) => {
@@ -12,6 +13,7 @@ const Profile = (props) => {
             <Wallpaper/>
             <div className={classes.afterWall}>
                 <Description profile={props.profile}/>
+                <ProfileStatus status={'HelloWorld'} />
                 <MyPostsContainer/>
             </div>
 
