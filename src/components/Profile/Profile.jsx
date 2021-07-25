@@ -13,7 +13,7 @@ const Profile = (props) => {
             <Wallpaper/>
             <div className={classes.afterWall}>
                 <Description profile={props.profile}/>
-                <ProfileStatus status={'HelloWorld'} />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                 <MyPostsContainer/>
             </div>
 

@@ -1,8 +1,9 @@
-import {usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
+const SET_USERS_STATUS = "SET_USERS_STATUS";
 
 let initialState = {
     postsState: [
@@ -12,7 +13,8 @@ let initialState = {
         {id: 4, message: 'Check my Greets', likescount: 0},
     ],
     newPostText: "",
-    profile: null
+    profile: null,
+    status: ''
 };
 
 
@@ -36,6 +38,11 @@ const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
+        case SET_USERS_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
         default:
             return state;
     }
@@ -45,11 +52,12 @@ const profilePageReducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
+export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 
 
-export const getProfileThunk = (userId) =>{
+export const getProfileThunk = (userId) => {
 
-    return(dispatch) => {
+    return (dispatch) => {
 
         usersAPI.getProfile(userId)
             .then(response => {
@@ -57,5 +65,24 @@ export const getProfileThunk = (userId) =>{
             })
     }
 }
+export const getUsersStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then(response => {
+                dispatch(setUsersStatus(response.data));
+            })
+    }
+}
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if(response.data.resultCode === 0) {
+                    dispatch(setUsersStatus(status));
+                }
+            })
+    }
+}
+
 
 export default profilePageReducer;
