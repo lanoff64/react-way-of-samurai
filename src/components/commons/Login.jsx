@@ -1,6 +1,7 @@
 import React from "react";
-import {useFormik} from 'formik';
-
+import {ErrorMessage, Form, Formik, Field} from 'formik';
+import * as Yup from 'yup';
+import classes from './Login.module.css'
 
 // export const LoginForm = () => {
 //     return (
@@ -22,63 +23,103 @@ import {useFormik} from 'formik';
 // }
 
 
+// export const LoginFormik = (props) => {
+//     const formik = useFormik({
+//         initialValues: {
+//             email: '',
+//             password: '',
+//             checkbox: ''
+//         },
+//         onSubmit: values => {
+//             console.log(values);
+//         },
+//     });
+//     return (
+//         <div>
+//             <form onSubmit={formik.handleSubmit}>
+//                 <div>
+//
+//                     <input
+//                         id="email"
+//                         name="email"
+//                         type="email"
+//                         onChange={formik.handleChange}
+//                         value={formik.values.email}
+//                         placeholder={'email'}
+//                     />
+//                 </div>
+//
+//                 <div>
+//
+//                     <input
+//                         id="password"
+//                         name="password"
+//                         type="password"
+//                         onChange={formik.handleChange}
+//                         value={formik.values.password}
+//                         placeholder={'password'}
+//                     />
+//                 </div>
+//                 <div>
+//
+//                     <input
+//                         id="checkbox"
+//                         name="checkbox"
+//                         type="checkbox"
+//                         onChange={formik.handleChange}
+//                         value={formik.values.checkbox}
+//                     /> запомнить меня
+//                 </div>
+//                 <div>
+//                     <button type="submit">Submit</button>
+//                 </div>
+//
+//             </form>
+//
+//         </div>
+//     );
+// }
+
 export const LoginFormik = (props) => {
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            checkbox: ''
-        },
-        onSubmit: values => {
-            console.log(values);
-        },
-    });
+
+
     return (
-        <div>
-            <form onSubmit={formik.handleSubmit}>
-                <div>
+        <Formik
+            initialValues={{email: '', password: '', checkbox: false}}
+            validationSchema={Yup.object({
+                password: Yup.string()
+                    .min(8, 'Пароль должен быть из 8 символов или больше')
+                    .required('Обязательное поле'),
+                email: Yup.string().email('Некорректный email').required('Обязательное поле'),
+            })}
+            onSubmit={values => {
+                console.log(values);
+            }}
+        >
+            {formik =>
+                (<Form onSubmit={formik.handleSubmit}>
 
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        onChange={formik.handleChange}
-                        value={formik.values.email}
-                        placeholder={'email'}
-                    />
-                </div>
+                    <Field className={classes.emailField} name="email" type="email" placeholder={'email'}/>
+                    <div className={classes.errors}><ErrorMessage name='email'/></div>
 
-                <div>
 
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        onChange={formik.handleChange}
-                        value={formik.values.password}
-                        placeholder={'password'}
-                    />
-                </div>
-                <div>
+                    <Field className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
+                    <div className={classes.errors}><ErrorMessage name='password'/></div>
 
-                    <input
-                        id="checkbox"
-                        name="checkbox"
-                        type="checkbox"
-                        onChange={formik.handleChange}
-                        value={formik.values.checkbox}
-                    /> запомнить меня
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
 
-            </form>
+                    <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
+                    <span className={classes.remember}>запомнить меня</span>
 
-        </div>
+
+                    <div className={classes.button}>
+                        <button type="submit">Войти</button>
+                    </div>
+
+                </Form>)}
+
+        </Formik>
     );
 }
-
 
 const Login = (props) => {
     return (
