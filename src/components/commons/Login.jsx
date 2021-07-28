@@ -2,31 +2,32 @@ import React from "react";
 import {useFormik} from 'formik';
 
 
-export const LoginForm = () => {
-    return (
-        <form>
-            <div>
-                <input placeholder={'login'} type={'string'}/>
-            </div>
-            <div>
-                <input placeholder={'password'} type={'password'}/>
-            </div>
-            <div>
-                <input type={'checkbox'}/> remember me
-            </div>
-            <div>
-                <button type={'submit'}>Отправить</button>
-            </div>
-        </form>
-    );
-}
+// export const LoginForm = () => {
+//     return (
+//         <form>
+//             <div>
+//                 <input placeholder={'login'} type={'string'}/>
+//             </div>
+//             <div>
+//                 <input placeholder={'password'} type={'password'}/>
+//             </div>
+//             <div>
+//                 <input type={'checkbox'}/> remember me
+//             </div>
+//             <div>
+//                 <button type={'submit'}>Отправить</button>
+//             </div>
+//         </form>
+//     );
+// }
 
 
-export const LoginFormik = () => {
+export const LoginFormik = (props) => {
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: ''
+            password: '',
+            checkbox: ''
         },
         onSubmit: values => {
             console.log(values);
@@ -58,7 +59,16 @@ export const LoginFormik = () => {
                         placeholder={'password'}
                     />
                 </div>
+                <div>
 
+                    <input
+                        id="checkbox"
+                        name="checkbox"
+                        type="checkbox"
+                        onChange={formik.handleChange}
+                        value={formik.values.checkbox}
+                    /> запомнить меня
+                </div>
                 <div>
                     <button type="submit">Submit</button>
                 </div>
