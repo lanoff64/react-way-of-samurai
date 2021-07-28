@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 //import Preloader from "../commons/Preloader/Preloader";
 import UserPhoto from "../../assets/images/no-user-26.jpg";
 
+
 const Header = (props) => {
 
     if (!props.profile) {
@@ -36,7 +37,8 @@ const Header = (props) => {
                 <div className={classes.avaLogin}>
                     <img src={props.profile.photos.small ? props.profile.photos.small: UserPhoto} alt="avatar"/>
                 </div>
-                <div> {props.id}</div>
+                <div> {props.id} <button onClick={props.logoutThunk}>Выйти</button></div>
+
             </div>
 
 

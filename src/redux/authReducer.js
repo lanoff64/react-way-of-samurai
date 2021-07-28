@@ -8,7 +8,7 @@ let initialState = {
     id: null,
     email: null,
     login: null,
-    isAuth:false,
+    isAuth: false,
     profile: null
 };
 
@@ -19,10 +19,10 @@ const authReducer = (state = initialState, action) => {
         case AUTH_USER_DATA:
             return {
                 ...state,
-                ...action.data,
+                ...action.payload,
                 isAuth: true
 
-        }
+            }
         case PROFILE_INFO:
             return {
                 ...state,
@@ -34,20 +34,19 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setAuthUser = (id,email,login) => ({type:AUTH_USER_DATA,data:{id,email,login} });
-export const setCurrentUserInfo = (profile) => ({type:PROFILE_INFO, profile });
-
+export const setAuthUser = (id, email, login,isAuth) => ({type: AUTH_USER_DATA, payload: {id, email, login, isAuth}});
+export const setCurrentUserInfo = (profile) => ({type: PROFILE_INFO, profile});
 
 
 export const authMeThunk = () => {
 
-    return(dispatch) =>{
+    return (dispatch) => {
 
         authAPI.me()
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
-                    dispatch(setAuthUser(id, email, login));
+                    dispatch(setAuthUser(id, email, login, true));
                     usersAPI.getProfile(id)//my id or may past hardCode userId, cause no-info of my profile
                         .then(response => {
                             dispatch(setCurrentUserInfo(response.data));
@@ -56,6 +55,33 @@ export const authMeThunk = () => {
 
             })
 
+    }
+}
+
+
+export const loginThunk = (email, password, rememberMe) => {
+
+    return (dispatch) => {
+
+        authAPI.login(email, password, rememberMe)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(authMeThunk());
+                }
+            })
+    }
+}
+
+export const logoutThunk = () => {
+
+    return (dispatch) => {
+
+        authAPI.logout()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAuthUser(null, null, null, false));
+                }
+            })
     }
 }
 

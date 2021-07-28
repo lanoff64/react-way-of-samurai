@@ -28,3 +28,11 @@
 .button {
     margin: 10px 10px 10px 130px;
 }
+
+.formik{
+    border: 1px solid cadetblue;
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}

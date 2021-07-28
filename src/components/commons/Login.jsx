@@ -2,6 +2,8 @@ import React from "react";
 import {ErrorMessage, Form, Formik, Field} from 'formik';
 import * as Yup from 'yup';
 import classes from './Login.module.css'
+import {Redirect} from "react-router-dom";
+
 
 // export const LoginForm = () => {
 //     return (
@@ -81,9 +83,8 @@ import classes from './Login.module.css'
 // }
 
 export const LoginFormik = (props) => {
-
-
     return (
+        <div className={classes.formik}>
         <Formik
             initialValues={{email: '', password: '', checkbox: false}}
             validationSchema={Yup.object({
@@ -93,7 +94,7 @@ export const LoginFormik = (props) => {
                 email: Yup.string().email('Некорректный email').required('Обязательное поле'),
             })}
             onSubmit={values => {
-                console.log(values);
+               props.loginThunk(values.email,values.password,values.checkbox);
             }}
         >
             {formik =>
@@ -118,18 +119,25 @@ export const LoginFormik = (props) => {
                 </Form>)}
 
         </Formik>
+        </div>
+
     );
 }
 
 const Login = (props) => {
+    if(props.isAuth){
+        return <Redirect to={'/profile'}/>
+    }
+
     return (
         <div>
             <h1>LOGIN</h1>
             <div>
-                <LoginFormik/>
+                <LoginFormik loginThunk={props.loginThunk}/>
             </div>
         </div>
     );
 }
+
 
 export default Login;

@@ -9,7 +9,7 @@ import NavBarContainer from "./components/NavBar/NavBarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/commons/Login";
+import LoginContainer from "./components/commons/LoginContainer";
 
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
                 <Route path='/music' component={Music}/>
                 <Route path='/news' component={News}/>
                 <Route path='/settings' component={Settings}/>
-                <Route path='/login' component={Login}/>
+                <Route path='/login' component={LoginContainer}/>
 
             </div>
 
