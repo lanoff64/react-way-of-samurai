@@ -18,7 +18,7 @@
     color: black;
     cursor: pointer;
     height: 43px;
-   border: 1px solid black;
+    border: 1px solid black;
     text-shadow: 0 0 1px black ;
     background-color: white;
     margin: 0 auto;
@@ -31,6 +31,12 @@
 }
 .avaLogin {
     float: right;
-    margin: -25px 0;
+    margin: -30px 0;
 
+}
+
+
+.avaLogin img{
+    margin: 10px 0 0 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }

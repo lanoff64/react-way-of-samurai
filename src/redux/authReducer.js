@@ -1,4 +1,4 @@
-import {authAPI, usersAPI} from "../api/api";
+import {authAPI, profileAPI} from "../api/api";
 
 const AUTH_USER_DATA = "AUTH_USER_DATA";
 const PROFILE_INFO = "PROFILE_INFO";
@@ -20,8 +20,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                isAuth: true
-
             }
         case PROFILE_INFO:
             return {
@@ -34,7 +32,7 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setAuthUser = (id, email, login,isAuth) => ({type: AUTH_USER_DATA, payload: {id, email, login, isAuth}});
+export const setAuthUser = (id, email, login,isAuth,profile) => ({type: AUTH_USER_DATA, payload: {id, email, login, isAuth,profile}});
 export const setCurrentUserInfo = (profile) => ({type: PROFILE_INFO, profile});
 
 
@@ -47,7 +45,7 @@ export const authMeThunk = () => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     dispatch(setAuthUser(id, email, login, true));
-                    usersAPI.getProfile(id)//my id or may past hardCode userId, cause no-info of my profile
+                    profileAPI.getProfile(id)//my id or may past hardCode userId, cause no-info of my profile
                         .then(response => {
                             dispatch(setCurrentUserInfo(response.data));
                         })
@@ -79,7 +77,7 @@ export const logoutThunk = () => {
         authAPI.logout()
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch(setAuthUser(null, null, null, false));
+                    dispatch(setAuthUser(null, null, null, false,null));
                 }
             })
     }
