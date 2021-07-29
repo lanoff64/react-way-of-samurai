@@ -7,6 +7,51 @@ import {ErrorMessage, Form, Formik, useField} from "formik";
 import * as Yup from "yup";
 
 
+const LoginFormik = (props) => {
+    const MyTextArea = ({label, ...props}) => {
+        const [field] = useField(props);
+        return (
+            <>
+                <textarea {...field} {...props} />
+            </>
+        );
+    };
+    return (
+        <div>
+            <Formik
+                initialValues={{messageText: ''}}
+                validationSchema={Yup.object({
+                    messageText: Yup.string()
+                        .max(1000,'Максимально 1000'),
+
+                })}
+                onSubmit={values => {
+                    props.sendMessage(values.messageText);
+                }}
+            >
+                {formik =>
+                    (<Form onSubmit={formik.handleSubmit}>
+
+                        <MyTextArea  className={classes.textField}
+                                     name="messageText"
+                                     type="text-area"
+                                     placeholder={`  Введите сообщение`}
+                                     rows="5"
+                                     cols="30"/>
+                        <div className={classes.errors}><ErrorMessage name='messageText'/></div>
+
+                        <div className={classes.button}>
+                            <button type="submit">Отправить</button>
+                        </div>
+
+                    </Form>)}
+
+            </Formik>
+        </div>
+
+    );
+}
+
 const Dialogs = (props) => {
 
     let mapDialog = props.dialogsPage.dialogsState.map(dialog =>
@@ -19,50 +64,6 @@ const Dialogs = (props) => {
         <AnswerMessage message={textMessageA.message} key={textMessageA.id}/>);
 
 
-const LoginFormik = (props) => {
-        const MyTextArea = ({label, ...props}) => {
-            const [field] = useField(props);
-            return (
-                <>
-                    <textarea {...field} {...props} />
-                </>
-            );
-        };
-        return (
-            <div>
-                <Formik
-                    initialValues={{messageText: ''}}
-                    validationSchema={Yup.object({
-                        messageText: Yup.string()
-                            .max(1000,'Максимально 1000'),
-
-                    })}
-                    onSubmit={values => {
-                        props.sendMessage(values.messageText);
-                    }}
-                >
-                    {formik =>
-                        (<Form onSubmit={formik.handleSubmit}>
-
-                            <MyTextArea  className={classes.textField}
-                                         name="messageText"
-                                         type="text-area"
-                                         placeholder={`  Введите сообщение`}
-                                         rows="5"
-                                         cols="30"/>
-                            <div className={classes.errors}><ErrorMessage name='messageText'/></div>
-
-                            <div className={classes.button}>
-                                <button type="submit">Отправить</button>
-                            </div>
-
-                        </Form>)}
-
-                </Formik>
-            </div>
-
-        );
-    }
 
     return (
         <div>

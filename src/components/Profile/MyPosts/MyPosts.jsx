@@ -6,7 +6,8 @@ import * as Yup from "yup";
 
 
 
-export const LoginFormik = (props) => {
+
+const LoginFormik = (props) => {
     const MyTextArea = ({label, ...props}) => {
         const [field] = useField(props);
         return (
@@ -51,7 +52,6 @@ export const LoginFormik = (props) => {
 
     );
 }
-
 
 const MyPosts = (props) => {
 

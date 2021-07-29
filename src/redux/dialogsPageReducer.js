@@ -49,7 +49,7 @@ const dialogsPageReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case("SEND-MESSAGE"):
+        case SEND_MESSAGE:
             return {
                 ...state,
                 answerState: [...state.answerState, {id: 3, message: action.messageText}]
