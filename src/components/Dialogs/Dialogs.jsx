@@ -3,6 +3,8 @@ import classes from './Dialogs.module.css'
 import Mesage from "./Mesage/Mesage";
 import UserDialog from "./UserDialog/UserDialog";
 import AnswerMessage from "./AnswerMessage/AnswerMessage";
+import {ErrorMessage, Form, Formik, useField} from "formik";
+import * as Yup from "yup";
 
 
 const Dialogs = (props) => {
@@ -17,12 +19,49 @@ const Dialogs = (props) => {
         <AnswerMessage message={textMessageA.message} key={textMessageA.id}/>);
 
 
-    let onSend = () => {
-        props.sendMessage();
-    }
-    let onMessageChange = (e) => {
-        let text = e.target.value;
-        props.updateMessageText(text);
+const LoginFormik = (props) => {
+        const MyTextArea = ({label, ...props}) => {
+            const [field] = useField(props);
+            return (
+                <>
+                    <textarea {...field} {...props} />
+                </>
+            );
+        };
+        return (
+            <div>
+                <Formik
+                    initialValues={{messageText: ''}}
+                    validationSchema={Yup.object({
+                        messageText: Yup.string()
+                            .max(1000,'Максимально 1000'),
+
+                    })}
+                    onSubmit={values => {
+                        props.sendMessage(values.messageText);
+                    }}
+                >
+                    {formik =>
+                        (<Form onSubmit={formik.handleSubmit}>
+
+                            <MyTextArea  className={classes.textField}
+                                         name="messageText"
+                                         type="text-area"
+                                         placeholder={`  Введите сообщение`}
+                                         rows="5"
+                                         cols="30"/>
+                            <div className={classes.errors}><ErrorMessage name='messageText'/></div>
+
+                            <div className={classes.button}>
+                                <button type="submit">Отправить</button>
+                            </div>
+
+                        </Form>)}
+
+                </Formik>
+            </div>
+
+        );
     }
 
     return (
@@ -38,14 +77,7 @@ const Dialogs = (props) => {
 
             <div className={classes.answer}>
                 {mapAnswerMessage}
-                <div className={classes.inputMessage}>
-                    <textarea placeholder={'Enter your message'} onChange={onMessageChange}
-                              value={props.dialogsPage.messageForSend}/>
-
-                    <div>
-                        <button onClick={onSend}>Send message</button>
-                    </div>
-                </div>
+                <LoginFormik sendMessage={props.sendMessage}/>
             </div>
 
 

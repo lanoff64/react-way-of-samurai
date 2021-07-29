@@ -66,3 +66,15 @@
     border-radius: 30px;
 
 }
+
+
+.errors {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 10px 10px 10px;
+}
+
+.button {
+    margin: 10px 10px 10px 153px;
+}

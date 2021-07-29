@@ -1,5 +1,5 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
+
 
 let initialState = {
 
@@ -39,7 +39,6 @@ let initialState = {
         {id: 5, message: "Yo"},
         {id: 6, message: "Hello"},
     ],
-    messageForSend: "",
     answerState: [
         {id: 1, message: "Hello, Dimich"},
         {id: 2, message: "I can write it on JS!"}
@@ -53,19 +52,12 @@ const dialogsPageReducer = (state = initialState, action) => {
         case("SEND-MESSAGE"):
             return {
                 ...state,
-                messageForSend: '',
-                answerState: [...state.answerState, {id: 3, message: state.messageForSend}]
-            };
-        case("UPDATE-MESSAGE-TEXT"):
-            return {
-                ...state,
-                messageForSend: action.text
+                answerState: [...state.answerState, {id: 3, message: action.messageText}]
             };
         default:
             return state;
     }
 }
 
-export const sendMessage = () => ({type: SEND_MESSAGE});
-export const updateMessageText = (text) => ({type: UPDATE_MESSAGE_TEXT, text: text});
+export const sendMessage = (messageText) => ({type: SEND_MESSAGE,messageText:messageText });
 export default dialogsPageReducer;
