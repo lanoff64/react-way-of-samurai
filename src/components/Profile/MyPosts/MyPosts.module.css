@@ -17,3 +17,18 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
     padding: 10px 0 10px 20px;
 }
+
+.errors {
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 10px 10px 10px;
+}
+
+.postTextField{
+
+}
+
+.button {
+    margin: 10px 10px 10px 363px;
+}
