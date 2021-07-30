@@ -107,13 +107,14 @@ export const LoginFormik = (props) => {
                     <Field className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
                     <div className={classes.errors}><ErrorMessage name='password'/></div>
 
-
-                    <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
-                    <span className={classes.remember}>запомнить меня</span>
+                    <label>
+                        <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
+                        <span className={classes.remember}>запомнить меня</span>
+                    </label>
 
 
                     <div className={classes.button}>
-                        <button type="submit">Войти</button>
+                        <button type="submit">Вход</button>
                     </div>
 
                 </Form>)}
