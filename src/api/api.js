@@ -44,6 +44,28 @@ export const profileAPI = {
     },
     updateStatus(status){
         return instance.put(`profile/status/`, {status: status});
+    },
+    updateAboutMe(aboutMe,FullName,LookingForAJobDescription = true,lookingForAJob=true,
+                  contacts={
+        facebook: "facebook.com/ruslan",
+        github: "github.com/ruslan",
+        instagram: "instagra.com/ruslan",
+        mainLink: null,
+        twitter: "https://twitter.com/@ruslan",
+        vk: "vk.com/ruslan",
+        website: 'ruslan.com',
+        youtube: 'https://www.youtube.com/channel/ruslan'
+
+    }){
+        return instance.put(`profile`,
+            {
+            aboutMe: aboutMe,
+            FullName:FullName,
+            LookingForAJobDescription:LookingForAJobDescription,
+            lookingForAJob,
+            contacts
+
+            });
     }
 }
 

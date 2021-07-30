@@ -3,6 +3,7 @@ import classes from './Disc.module.css';
 import Preloader from "../../commons/Preloader/Preloader";
 import UserPhoto from "./../../../assets/images/no-user-26.jpg"
 
+
 const Description = (props) => {
 
     if (!props.profile) {

@@ -3,6 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = "ADD-POST";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 const SET_USERS_STATUS = "SET_USERS_STATUS";
+const SET_USER_ABOUT = "SET_USER_ABOUT";
 
 let initialState = {
     postsState: [
@@ -12,7 +13,8 @@ let initialState = {
         {id: 4, message: 'Check my Greets', likescount: 0},
     ],
     profile: null,
-    status: ''
+    status: '',
+    aboutMe: null
 };
 
 
@@ -34,6 +36,11 @@ const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case SET_USER_ABOUT:
+            return {
+                ...state,
+                aboutMe: action.aboutMe,
+                }
         default:
             return state;
     }
@@ -43,6 +50,7 @@ const profilePageReducer = (state = initialState, action) => {
 export const addPostAC = (postText) => ({type: ADD_POST, postText:postText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
+export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
 
 
 export const getProfileThunk = (userId) => {
@@ -74,5 +82,15 @@ export const updateStatus = (status) => {
     }
 }
 
+export const updateUserAbout = (aboutMe, FullName,LookingForAJobDescription,contacts) => {
+    return (dispatch) => {
+        profileAPI.updateAboutMe(aboutMe, FullName,LookingForAJobDescription,contacts)
+            .then(response => {
+                if(response.data.resultCode === 0) {
+                    dispatch(setUserAbout(aboutMe));
+                }
+            })
+    }
+}
 
 export default profilePageReducer;

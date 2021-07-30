@@ -82,6 +82,8 @@ import {Redirect} from "react-router-dom";
 //     );
 // }
 
+
+
 export const LoginFormik = (props) => {
     return (
         <div className={classes.formik}>
@@ -96,6 +98,7 @@ export const LoginFormik = (props) => {
             onSubmit={values => {
                props.loginThunk(values.email,values.password,values.checkbox);
             }}
+
         >
             {formik =>
                 (<Form onSubmit={formik.handleSubmit}>
@@ -104,7 +107,7 @@ export const LoginFormik = (props) => {
                     <div className={classes.errors}><ErrorMessage name='email'/></div>
 
 
-                    <Field className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
+                    <Field  className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
                     <div className={classes.errors}><ErrorMessage name='password'/></div>
 
                     <label>
