@@ -83,6 +83,16 @@ const Users = (props) => {
                     </div>)
                 }
             </div>
+            <div className={classes.pages}>
+                {pages.map(p => {
+                    return <span
+                        className={props.currentPage === p ? classes.selectedPage : undefined}
+                        key={p.toString()}
+                        onClick={(event) => {
+                            props.onPageClick(p);
+                        }}>{p}</span>
+                })}
+            </div>
         </div>
 
     );

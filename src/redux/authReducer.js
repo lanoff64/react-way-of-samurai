@@ -32,14 +32,15 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setAuthUser = (id, email, login,isAuth,profile) => ({type: AUTH_USER_DATA, payload: {id, email, login, isAuth,profile}});
+export const setAuthUser = (id, email, login, isAuth, profile) => ({
+    type: AUTH_USER_DATA,
+    payload: {id, email, login, isAuth, profile}
+});
 export const setCurrentUserInfo = (profile) => ({type: PROFILE_INFO, profile});
 
 
 export const authMeThunk = () => {
-
     return (dispatch) => {
-
         authAPI.me()
             .then(response => {
                 if (response.data.resultCode === 0) {
@@ -50,23 +51,25 @@ export const authMeThunk = () => {
                             dispatch(setCurrentUserInfo(response.data));
                         })
                 }
-
             })
-
     }
 }
 
 
-export const loginThunk = (email, password, rememberMe,setSubmitting, setFieldError, setStatus) => {
-
+export const loginThunk = (email, password, rememberMe, setSubmitting, setFieldError, setStatus, captcha) => {
     return (dispatch) => {
-
-        authAPI.login(email, password, rememberMe)
+        authAPI.login(email, password, rememberMe, captcha)
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(authMeThunk());
                 }
-                else{
+                if (response.data.resultCode === 10) {
+                    setStatus(response.data.messages)
+                    authAPI.getCaptcha()
+                        .then(response => {
+                            setSubmitting(response.data.url)
+                        })
+                } else {
                     setStatus(response.data.messages)
                 }
             })
@@ -74,16 +77,15 @@ export const loginThunk = (email, password, rememberMe,setSubmitting, setFieldEr
 }
 
 export const logoutThunk = () => {
-
     return (dispatch) => {
-
         authAPI.logout()
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch(setAuthUser(null, null, null, false,null));
+                    dispatch(setAuthUser(null, null, null, false, null));
                 }
             })
     }
 }
+
 
 export default authReducer;

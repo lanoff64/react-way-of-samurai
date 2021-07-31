@@ -83,54 +83,65 @@ import {Redirect} from "react-router-dom";
 // }
 
 
-
 export const LoginFormik = (props) => {
     return (
         <div className={classes.formik}>
-        <Formik
-            initialValues={{email: '', password: '', checkbox: false}}
-            validationSchema={Yup.object({
-                password: Yup.string()
-                    .min(6, 'Пароль должен быть из 6 символов или больше')
-                    .required('Обязательное поле'),
-                email: Yup.string().email('Некорректный email').required('Обязательное поле'),
-            })}
-            onSubmit={(values,{setSubmitting, setFieldError, setStatus}) => {
-               props.loginThunk(values.email,values.password,values.checkbox,setSubmitting, setFieldError, setStatus);
-            }}
+            <Formik
+                initialValues={{email: '', password: '', checkbox: false, captcha: ''}}
+                validationSchema={Yup.object({
+                    password: Yup.string().required('Обязательное поле'),
+                    email: Yup.string().email('Некорректный email').required('Обязательное поле'),
+                })}
+                onSubmit={(values, {setSubmitting, setFieldError, setStatus}) => {
+                    props.loginThunk(values.email, values.password, values.checkbox, setSubmitting, setFieldError, setStatus, values.captcha);
+                }}
 
-        >
-            {formik =>
-                (<Form onSubmit={formik.handleSubmit}>
+            >
+                {formik =>
+                    (<Form onSubmit={formik.handleSubmit}>
 
-                    <Field className={classes.emailField} name="email" type="email" placeholder={'email'}/>
-                    <div className={classes.errors}><ErrorMessage name='email'/></div>
+                        <Field className={classes.emailField} name="email" type="email" placeholder={'email'}/>
+                        <div className={classes.errors}><ErrorMessage name='email'/></div>
 
 
+                        <Field className={classes.passwordField} name="password" type="password"
+                               placeholder={'password'}/>
+                        <div className={classes.errors}><ErrorMessage name='password'/></div>
+                        <div className={classes.errors}>{formik.status}</div>
 
-                    <Field  className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
-                    <div className={classes.errors}><ErrorMessage name='password'/></div>
-                    <div className={classes.errors}>{formik.status}</div>
-                    <label>
-                        <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
-                        <span className={classes.remember}>запомнить меня</span>
-                    </label>
+                        {
+                            (formik.status) ?
+                                (formik.status[0] === 'Incorrect anti-bot symbols') && (
+                                    <div>
+                                        <div><img src={formik.isSubmitting} alt=""/></div>
+                                        <div><Field name="captcha" type="text" placeholder={'captcha'}/></div>
+                                        <div className={classes.errors}><ErrorMessage name='captcha'/></div>
+                                    </div>
+                                ) : null
+
+                        }
 
 
-                    <div className={classes.button}>
-                        <button type="submit">Вход</button>
-                    </div>
+                        <label>
+                            <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
+                            <span className={classes.remember}>запомнить меня</span>
+                        </label>
 
-                </Form>)}
 
-        </Formik>
+                        <div className={classes.button}>
+                            <button type="submit">Вход</button>
+                        </div>
+
+                    </Form>)}
+
+            </Formik>
         </div>
 
     );
 }
 
 const Login = (props) => {
-    if(props.isAuth){
+    if (props.isAuth) {
         return <Redirect to={'/profile'}/>
     }
 
