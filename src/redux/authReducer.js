@@ -57,7 +57,7 @@ export const authMeThunk = () => {
 }
 
 
-export const loginThunk = (email, password, rememberMe) => {
+export const loginThunk = (email, password, rememberMe,setSubmitting, setFieldError, setStatus) => {
 
     return (dispatch) => {
 
@@ -65,6 +65,9 @@ export const loginThunk = (email, password, rememberMe) => {
             .then(response => {
                 if (response.data.resultCode === 0) {
                     dispatch(authMeThunk());
+                }
+                else{
+                    setStatus(response.data.messages)
                 }
             })
     }

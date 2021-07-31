@@ -1,5 +1,5 @@
 import React from "react";
-import {ErrorMessage, Form, Formik, Field} from 'formik';
+import {ErrorMessage, Form, Formik, Field,} from 'formik';
 import * as Yup from 'yup';
 import classes from './Login.module.css'
 import {Redirect} from "react-router-dom";
@@ -91,12 +91,12 @@ export const LoginFormik = (props) => {
             initialValues={{email: '', password: '', checkbox: false}}
             validationSchema={Yup.object({
                 password: Yup.string()
-                    .min(8, 'Пароль должен быть из 8 символов или больше')
+                    .min(6, 'Пароль должен быть из 6 символов или больше')
                     .required('Обязательное поле'),
                 email: Yup.string().email('Некорректный email').required('Обязательное поле'),
             })}
-            onSubmit={values => {
-               props.loginThunk(values.email,values.password,values.checkbox);
+            onSubmit={(values,{setSubmitting, setFieldError, setStatus}) => {
+               props.loginThunk(values.email,values.password,values.checkbox,setSubmitting, setFieldError, setStatus);
             }}
 
         >
@@ -107,9 +107,10 @@ export const LoginFormik = (props) => {
                     <div className={classes.errors}><ErrorMessage name='email'/></div>
 
 
+
                     <Field  className={classes.passwordField} name="password" type="password" placeholder={'password'}/>
                     <div className={classes.errors}><ErrorMessage name='password'/></div>
-
+                    <div className={classes.errors}>{formik.status}</div>
                     <label>
                         <Field className={classes.checkboxField} name="checkbox" type="checkbox"/>
                         <span className={classes.remember}>запомнить меня</span>
