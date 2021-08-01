@@ -13,6 +13,9 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId; //hardCode was 2
+            if(!userId) {
+                userId = this.props.match.params.userId;
+            }
         }
         this.props.getProfileThunk(userId);
         this.props.getUsersStatus(userId);
