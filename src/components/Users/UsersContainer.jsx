@@ -15,7 +15,8 @@ import {
     setCurrentPageSelector, setFollowingInProgressSelector, setIsFetchSelector,
     setPagesSizeSelector,
     setTotalUsersCountSelector,
-    setUsersSelector
+    setUsersSelector,
+
 } from "../../redux/users-selectors";
 
 
@@ -33,6 +34,7 @@ class UsersContainer extends React.Component {
 
 
     render() {
+        console.log('render Users')
         return (<>
                 {this.props.isFetch ? <Preloader/> : null}
                 <Users totalUsersCount={this.props.totalUsersCount}
@@ -64,6 +66,7 @@ class UsersContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
+    console.log('mapStateToProps Users')
     return {
         users: setUsersSelector(state),
         pagesSize: setPagesSizeSelector(state),
