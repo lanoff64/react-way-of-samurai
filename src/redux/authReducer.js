@@ -41,7 +41,7 @@ export const setCurrentUserInfo = (profile) => ({type: PROFILE_INFO, profile});
 
 export const authMeThunk = () => {
     return (dispatch) => {
-        authAPI.me()
+        return authAPI.me()
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
