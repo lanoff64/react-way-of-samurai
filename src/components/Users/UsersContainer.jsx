@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import {
     follow,
-    getUsers,
+    requestUsers,
     setCurrentPage,
     toggleFollowingProgress, unfollow,
 
@@ -17,12 +17,11 @@ import {compose} from "redux";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pagesSize);
+        this.props.requestUsers(this.props.currentPage, this.props.pagesSize);
     }
 
     onPageClick = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.getUsers(pageNumber, this.props.pagesSize);
+        this.props.requestUsers(pageNumber, this.props.pagesSize);
 
     }
 
@@ -59,7 +58,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(connect(mapStateToProps, {
-        follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers
+        follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers
     }
     ),
     // withAuthRedirectComponent
