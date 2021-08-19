@@ -5,8 +5,6 @@ import {ErrorMessage, Form, Formik, useField} from "formik";
 import * as Yup from "yup";
 
 
-
-
 const LoginFormik = (props) => {
     const MyTextArea = ({label, ...props}) => {
         const [field] = useField(props);
@@ -23,7 +21,7 @@ const LoginFormik = (props) => {
                 validationSchema={Yup.object({
                     postText: Yup.string()
                         .min(2, 'Хотя-бы 2 символа')
-                        .max(500,'Максимально 500'),
+                        .max(500, 'Максимально 500'),
 
                 })}
                 onSubmit={values => {
@@ -33,12 +31,12 @@ const LoginFormik = (props) => {
                 {formik =>
                     (<Form onSubmit={formik.handleSubmit}>
 
-                        <MyTextArea  className={classes.postTextField}
-                                     name="postText"
-                                     type="text-area"
-                                     placeholder={` Что у Вас нового?`}
-                                     rows="10"
-                                     cols="60"/>
+                        <MyTextArea className={classes.postTextField}
+                                    name="postText"
+                                    type="text-area"
+                                    placeholder={` Что у Вас нового?`}
+                                    rows="10"
+                                    cols="60"/>
                         <div className={classes.errors}><ErrorMessage name='postText'/></div>
 
                         <div className={classes.button}>
