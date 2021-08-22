@@ -59,6 +59,7 @@ const MyPosts = (props) => {
 
 
     return (
+
         <div className={classes.mypost}>
             <div>
                 <div className={classes.labelMyPost}>

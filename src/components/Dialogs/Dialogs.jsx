@@ -53,7 +53,6 @@ const LoginFormik = (props) => {
 }
 
 const Dialogs = (props) => {
-
     let mapDialog = props.dialogsPage.dialogsState.map(dialog =>
         <UserDialog name={dialog.name} key={dialog.id} id={dialog.id} avatar={dialog.avatar}/>);
 
