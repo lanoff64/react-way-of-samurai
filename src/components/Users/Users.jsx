@@ -2,32 +2,22 @@ import React from "react";
 import classes from './Users.module.css'
 import UserPhoto from "../../assets/images/no-user-26.jpg"
 import {NavLink} from "react-router-dom";
+import Paginator from "../commons/Paginator/Paginator";
 
-const Users = (props) => {
+const Users = ({currentPage,onPageClick,totalUsersCount,pagesSize,...props}) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pagesSize);
-
-    let pages = [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
 
     return (
         <div>
             <div className={classes.samurai}>
                 Users from <a href="https://social-network.samuraijs.com/">social-network.samuraijs.com</a>
             </div>
-            <div className={classes.pages}>
-                {pages.map(p => {
-                    return <span
-                        className={props.currentPage === p ? classes.selectedPage : undefined}
-                        key={p.toString()}
-                        onClick={(event) => {
-                            props.onPageClick(p);
-                        }}>{p}</span>
-                })}
-            </div>
+            <Paginator
+                currentPage={currentPage}
+                onPageClick={onPageClick}
+                totalUsersCount={totalUsersCount}
+                pagesSize={pagesSize}
+            />
             <div className={classes.usersList}>
                 {
                     props.users.map(u => <div className={classes.oneUser} key={u.id}>
@@ -83,16 +73,12 @@ const Users = (props) => {
                     </div>)
                 }
             </div>
-            <div className={classes.pages}>
-                {pages.map(p => {
-                    return <span
-                        className={props.currentPage === p ? classes.selectedPage : undefined}
-                        key={p.toString()}
-                        onClick={(event) => {
-                            props.onPageClick(p);
-                        }}>{p}</span>
-                })}
-            </div>
+            <Paginator
+                currentPage={currentPage}
+                onPageClick={onPageClick}
+                totalUsersCount={totalUsersCount}
+                pagesSize={pagesSize}
+            />
         </div>
 
     );
