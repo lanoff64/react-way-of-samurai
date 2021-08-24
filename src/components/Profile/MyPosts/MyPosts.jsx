@@ -54,9 +54,10 @@ const LoginFormik = (props) => {
 const MyPosts = (props) => {
 
     let mapPostsData =
-        props.postsState.map(postMessage => <Post message={postMessage.message} key={postMessage.id}
-                                                  likescount={postMessage.likescount}/>);
-
+        [...props.postsState]
+            .reverse()
+            .map(postMessage => <Post message={postMessage.message} key={postMessage.id}
+                                      likescount={postMessage.likescount}/>);
 
     return (
 
