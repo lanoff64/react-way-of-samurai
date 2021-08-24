@@ -1,7 +1,7 @@
 import {authAPI, profileAPI} from "../api/api";
 
-const AUTH_USER_DATA = "AUTH_USER_DATA";
-const PROFILE_INFO = "PROFILE_INFO";
+const AUTH_USER_DATA = "network/auth/AUTH_USER_DATA";
+const PROFILE_INFO = "network/profile/PROFILE_INFO";
 
 
 let initialState = {

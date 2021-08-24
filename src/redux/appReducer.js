@@ -1,6 +1,6 @@
 import {authMeThunk} from "./authReducer";
 
-const INITIALISED_SUCCESS = "INITIALISED_SUCCESS";
+const INITIALISED_SUCCESS = "network/initial/INITIALISED_SUCCESS";
 
 
 let initialState = {
