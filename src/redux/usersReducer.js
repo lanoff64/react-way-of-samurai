@@ -111,27 +111,27 @@ export const requestUsers = (page, pagesSize) => {
     }
 }
 
+const followUnfollowFlow = async (dispatch, userId,apiMethod,actionCreator) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    let response = await apiMethod(userId);
 
-export const follow = (userId) => {
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        let response = await usersAPI.followUser(userId);
-        if (response.data.resultCode === 0) {
-            dispatch(followSuccess(userId))
-        }
-        dispatch(toggleFollowingProgress(false, userId));
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(userId))
     }
+    dispatch(toggleFollowingProgress(false, userId));
 }
 
 
+export const follow = (userId) => {
+    return async (dispatch) => {
+       await followUnfollowFlow(dispatch, userId,usersAPI.followUser.bind(usersAPI),followSuccess);
+    }
+}
+
 export const unfollow = (userId) => {
     return async (dispatch) => {
+      await followUnfollowFlow(dispatch, userId,usersAPI.unFollowUser.bind(usersAPI),unfollowSuccess);
         dispatch(toggleFollowingProgress(true, userId));
-        let response = await usersAPI.unFollowUser(userId);
-        if (response.data.resultCode === 0) {
-            dispatch(unfollowSuccess(userId))
-        }
-        dispatch(toggleFollowingProgress(false, userId));
     }
 }
 
