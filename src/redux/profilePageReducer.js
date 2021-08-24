@@ -24,7 +24,7 @@ const profilePageReducer = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                postsState: [...state.postsState,{id: 5, message: action.postText, likescount: 0}]
+                postsState: [...state.postsState, {id: 5, message: action.postText, likescount: 0}]
             };
         case SET_USERS_PROFILE:
             return {
@@ -40,14 +40,14 @@ const profilePageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 aboutMe: action.aboutMe,
-                }
+            }
         default:
             return state;
     }
 }
 
 
-export const addPostAC = (postText) => ({type: ADD_POST, postText:postText});
+export const addPostAC = (postText) => ({type: ADD_POST, postText: postText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
@@ -55,41 +55,33 @@ export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
 
 export const getProfileThunk = (userId) => {
 
-    return (dispatch) => {
-
-        profileAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUsersProfile(response.data));
-            })
+    return async (dispatch) => {
+        let response = await profileAPI.getProfile(userId);
+        dispatch(setUsersProfile(response.data));
     }
 }
 export const getUsersStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setUsersStatus(response.data));
-            })
-    }
-}
-export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    dispatch(setUsersStatus(status));
-                }
-            })
+    return async (dispatch) => {
+        let response = await profileAPI.getStatus(userId);
+        dispatch(setUsersStatus(response.data));
     }
 }
 
-export const updateUserAbout = (aboutMe, FullName,LookingForAJobDescription,contacts) => {
-    return (dispatch) => {
-        profileAPI.updateAboutMe(aboutMe, FullName,LookingForAJobDescription,contacts)
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    dispatch(setUserAbout(aboutMe));
-                }
-            })
+export const updateStatus = (status) => {
+    return async (dispatch) => {
+        let response = await profileAPI.updateStatus(status);
+        if (response.data.resultCode === 0) {
+            dispatch(setUsersStatus(status));
+        }
+    }
+}
+
+export const updateUserAbout = (aboutMe, FullName, LookingForAJobDescription, contacts) => {
+    return async (dispatch) => {
+        let response = await profileAPI.updateAboutMe(aboutMe, FullName, LookingForAJobDescription, contacts);
+        if (response.data.resultCode === 0) {
+            dispatch(setUserAbout(aboutMe));
+        }
     }
 }
 
