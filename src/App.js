@@ -20,18 +20,14 @@ class App extends React.Component {
     componentDidMount() {
         this.props.initializeAppThunk();
     }
-
     render() {
         if(!this.props.initialized){
             return <Preloader/>
         }
         return (
-
             <div className='app-wrapper'>
-
                 <HeaderContainer/>
                 <NavBarContainer/>
-
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
                            render={() => <DialogsContainer/>}/>
@@ -43,10 +39,7 @@ class App extends React.Component {
                     <Route path='/news' component={News}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/login' component={LoginContainer}/>
-
                 </div>
-
-
             </div>
 
         );
