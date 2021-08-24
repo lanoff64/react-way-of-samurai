@@ -43,10 +43,10 @@ export const authMeThunk = () => {
     return async (dispatch) => {
         const response = await authAPI.me();
         if (response.data.resultCode === 0) {
-          let {id, email, login} = response.data.data;
-          dispatch(setAuthUser(id, email, login, true));
-          const response2 = await profileAPI.getProfile(id);//my id or may past hardCode userId, cause no-info of my profile
-          dispatch(setCurrentUserInfo(response2.data));
+            let {id, email, login} = response.data.data;
+            dispatch(setAuthUser(id, email, login, true));
+            const response2 = await profileAPI.getProfile(id);//my id or may past hardCode userId, cause no-info of my profile
+            dispatch(setCurrentUserInfo(response2.data));
 
         }
     }
