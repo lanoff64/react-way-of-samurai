@@ -113,7 +113,7 @@ export const LoginFormik = (props) => {
                             (formik.status) ?
                                 (formik.status[0] === 'Incorrect anti-bot symbols') && (
                                     <div>
-                                        <div><img src={formik.isSubmitting} alt=""/></div>
+                                        <div><img src={formik.isSubmitting.toString()} alt=""/></div>
                                         <div><Field name="captcha" type="text" placeholder={'captcha'}/></div>
                                         <div className={classes.errors}><ErrorMessage name='captcha'/></div>
                                     </div>
