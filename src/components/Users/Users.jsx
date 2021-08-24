@@ -1,10 +1,9 @@
 import React from "react";
 import classes from './Users.module.css'
-import UserPhoto from "../../assets/images/no-user-26.jpg"
-import {NavLink} from "react-router-dom";
 import Paginator from "../commons/Paginator/Paginator";
+import User from "./User";
 
-const Users = ({currentPage,onPageClick,totalUsersCount,pagesSize,...props}) => {
+const Users = ({unfollow,follow,followingInProgress,currentPage,onPageClick,totalUsersCount,pagesSize,users,...props}) => {
 
 
     return (
@@ -19,60 +18,15 @@ const Users = ({currentPage,onPageClick,totalUsersCount,pagesSize,...props}) => 
                 pagesSize={pagesSize}
             />
             <div className={classes.usersList}>
-                {
-                    props.users.map(u => <div className={classes.oneUser} key={u.id}>
-                        <div>
-                            <div>
-                                <NavLink to={'/profile/' + u.id}>
-                                    <img src={u.photos.small != null ? u.photos.small : UserPhoto}
-                                         className={classes.avatarURL} alt=""/>
-                                </NavLink>
-                            </div>
-                            <div>
-
-                                {
-                                    u.followed ?
-
-                                    <button
-                                        disabled={props.followingInProgress.some(id => id === u.id)}
-                                            className={classes.userButton} onClick={() => {
-
-                                          props.unfollow(u.id)
-
-                                    }}>Unfollow </button>
-
-                                    : <button
-                                        disabled={props.followingInProgress.some(id => id === u.id)}
-                                            className={classes.userButton} onClick={() => {
-
-                                            props.follow(u.id)
-
-                                    }}>Follow</button>
-                                }
-
-                            </div>
-
-                        </div>
-
-                        <div className={classes.userInfo}>
-                            <div className={classes.userNameArea}>
-                                Name: {u.name}
-                            </div>
-                            <div>
-                                <div className={classes.userIdArea}>id:{u.id}</div>
-                            </div>
-
-
-                            <div className={classes.userStatusArea}>
-
-                                {u.status != null ? u.status : null}
-
-                            </div>
-                        </div>
-
-                    </div>)
+                {       users.map(u => <User
+                        user={u}
+                        followingInProgress={followingInProgress}
+                        unfollow={unfollow}
+                        follow={follow}
+                        key={u.id}/>)
                 }
             </div>
+
             <Paginator
                 currentPage={currentPage}
                 onPageClick={onPageClick}
