@@ -45,9 +45,10 @@ export const authMeThunk = () => {
         if (response.data.resultCode === 0) {
             let {id, email, login} = response.data.data;
             dispatch(setAuthUser(id, email, login, true));
-            {let response = await profileAPI.getProfile(id);//my id or may past hardCode userId, cause no-info of my profile
-            dispatch(setCurrentUserInfo(response.data))}
-
+            {
+                let response = await profileAPI.getProfile(id);
+                dispatch(setCurrentUserInfo(response.data))
+            }
         }
     }
 }
@@ -56,31 +57,26 @@ export const authMeThunk = () => {
 export const loginThunk = (email, password, rememberMe, setSubmitting, setFieldError, setStatus, captcha) => {
     return async (dispatch) => {
         let response = await authAPI.login(email, password, rememberMe, captcha);
-
         if (response.data.resultCode === 0) {
             dispatch(authMeThunk());
         }
         if (response.data.resultCode === 10) {
-            setStatus(response.data.messages)
-            authAPI.getCaptcha()
-                .then(response => {
-                    setSubmitting(response.data.url)
-                })
+            setStatus(response.data.messages);
+            {let response = await authAPI.getCaptcha();
+                setSubmitting(response.data.url)
+            }//{}cause second let response;
         } else {
             setStatus(response.data.messages)
         }
-
     }
 }
 
 export const logoutThunk = () => {
-    return (dispatch) => {
-        authAPI.logout()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthUser(null, null, null, false, null));
-                }
-            })
+    return async (dispatch) => {
+        let response = await authAPI.logout();
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUser(null, null, null, false, null));
+        }
     }
 }
 
