@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjInArray} from "../utils/objHelper";
 
 const FOLLOW = "network/users/FOLLOW";
 const UNFOLLOW = "network/users/UNFOLLOW";
@@ -26,23 +27,13 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u;
-                })
+                users: updateObjInArray(state.users,action.userId,'id', {followed:true})
             }
 
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
-                    }
-                    return u;
-                })
+                users: updateObjInArray(state.users,action.userId,'id', {followed:false})
             }
         case SET_USERS: {
             return {
@@ -123,14 +114,14 @@ const followUnfollowFlow = async (dispatch, userId,apiMethod,actionCreator) => {
 
 
 export const follow = (userId) => {
-    return async (dispatch) => {
-       await followUnfollowFlow(dispatch, userId,usersAPI.followUser.bind(usersAPI),followSuccess);
+    return (dispatch) => {
+        followUnfollowFlow(dispatch, userId,usersAPI.followUser.bind(usersAPI),followSuccess);
     }
 }
 
 export const unfollow = (userId) => {
-    return async (dispatch) => {
-      await followUnfollowFlow(dispatch, userId,usersAPI.unFollowUser.bind(usersAPI),unfollowSuccess);
+    return (dispatch) => {
+       followUnfollowFlow(dispatch, userId,usersAPI.unFollowUser.bind(usersAPI),unfollowSuccess);
         dispatch(toggleFollowingProgress(true, userId));
     }
 }
