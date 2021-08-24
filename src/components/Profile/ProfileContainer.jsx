@@ -15,6 +15,7 @@ class ProfileContainer extends React.Component {
             userId = this.props.authorizedUserId; //hardCode was 2
             if(!userId) {
                 this.props.history.push('/login');
+                return;
             }
         }
 

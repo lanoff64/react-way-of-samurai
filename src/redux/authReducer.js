@@ -41,11 +41,11 @@ export const setCurrentUserInfo = (profile) => ({type: PROFILE_INFO, profile});
 
 export const authMeThunk = () => {
     return async (dispatch) => {
-        const response = await authAPI.me();
+        let response = await authAPI.me();
         if (response.data.resultCode === 0) {
             let {id, email, login} = response.data.data;
             dispatch(setAuthUser(id, email, login, true));
-            const response2 = await profileAPI.getProfile(id);//my id or may past hardCode userId, cause no-info of my profile
+            let response2 = await profileAPI.getProfile(id);//my id or may past hardCode userId, cause no-info of my profile
             dispatch(setCurrentUserInfo(response2.data));
 
         }
@@ -54,22 +54,22 @@ export const authMeThunk = () => {
 
 
 export const loginThunk = (email, password, rememberMe, setSubmitting, setFieldError, setStatus, captcha) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe, captcha)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(authMeThunk());
-                }
-                if (response.data.resultCode === 10) {
-                    setStatus(response.data.messages)
-                    authAPI.getCaptcha()
-                        .then(response => {
-                            setSubmitting(response.data.url)
-                        })
-                } else {
-                    setStatus(response.data.messages)
-                }
-            })
+    return async (dispatch) => {
+        let response = await authAPI.login(email, password, rememberMe, captcha);
+
+        if (response.data.resultCode === 0) {
+            dispatch(authMeThunk());
+        }
+        if (response.data.resultCode === 10) {
+            setStatus(response.data.messages)
+            authAPI.getCaptcha()
+                .then(response => {
+                    setSubmitting(response.data.url)
+                })
+        } else {
+            setStatus(response.data.messages)
+        }
+
     }
 }
 
