@@ -15,7 +15,7 @@ const Paginator = (props) => {
     return (
         <div className={classes.pages}>
             {pages.map(p => {
-                return <span className={props.currentPage === p && classes.selectedPage}
+                return <span className={props.currentPage === p ? classes.selectedPage : undefined}
                              key={p.toString()}
                              onClick={(event) => {
                                  props.onPageClick(p);
