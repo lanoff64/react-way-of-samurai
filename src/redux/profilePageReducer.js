@@ -24,7 +24,7 @@ const profilePageReducer = (state = initialState, action) => {
         case ADD_POST:
             return {
                 ...state,
-                postsState: [{id: 5, message: action.postText, likescount: 0}, ...state.postsState]
+                postsState: [...state.postsState,{id: 5, message: action.postText, likescount: 0}]
             };
         case SET_USERS_PROFILE:
             return {
