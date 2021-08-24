@@ -34,7 +34,6 @@ class UsersContainer extends React.Component {
 
 
     render() {
-        console.log('render Users')
         return (<>
                 {this.props.isFetch ? <Preloader/> : null}
                 <Users totalUsersCount={this.props.totalUsersCount}
@@ -52,21 +51,7 @@ class UsersContainer extends React.Component {
 
 }
 
-
-// let mapStateToProps = (state) => {
-//     return {
-//         users: state.usersPage.users,
-//         pagesSize: state.usersPage.pagesSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetch: state.usersPage.isFetch,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
-
-
 let mapStateToProps = (state) => {
-    console.log('mapStateToProps Users')
     return {
         users: setUsersSelector(state),
         pagesSize: setPagesSizeSelector(state),
