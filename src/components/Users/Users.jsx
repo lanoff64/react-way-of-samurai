@@ -14,7 +14,7 @@ const Users = ({unfollow,follow,followingInProgress,currentPage,onPageClick,tota
             <Paginator
                 currentPage={currentPage}
                 onPageClick={onPageClick}
-                totalUsersCount={totalUsersCount}
+                totalItemsCount={totalUsersCount}
                 pagesSize={pagesSize}
             />
             <div className={classes.usersList}>
@@ -30,7 +30,7 @@ const Users = ({unfollow,follow,followingInProgress,currentPage,onPageClick,tota
             <Paginator
                 currentPage={currentPage}
                 onPageClick={onPageClick}
-                totalUsersCount={totalUsersCount}
+                totalItemsCount={totalUsersCount}
                 pagesSize={pagesSize}
             />
         </div>
