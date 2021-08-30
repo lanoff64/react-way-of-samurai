@@ -28,24 +28,26 @@ class App extends React.Component {
             return <Preloader/>
         }
         return (
-            <Suspense fallback={<Preloader/>}>
+
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <NavBarContainer/>
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs'
-                           render={() => <DialogsContainer/>}/>
-                    <Route path='/profile/:userId?'
-                           render={() => <ProfileContainer/>}/>
-                    <Route path='/users'
-                           render={() => <UsersContainer/>}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/settings' component={Settings}/>
-                    <Route path='/login' component={LoginContainer}/>
+                    <Suspense fallback={<Preloader/>}>
+                        <Route path='/dialogs'
+                               render={() => <DialogsContainer/>}/>
+                        <Route path='/profile/:userId?'
+                               render={() => <ProfileContainer/>}/>
+                        <Route path='/users'
+                               render={() => <UsersContainer/>}/>
+                        <Route path='/music' component={Music}/>
+                        <Route path='/news' component={News}/>
+                        <Route path='/settings' component={Settings}/>
+                        <Route path='/login' component={LoginContainer}/>
+                    </Suspense>
                 </div>
             </div>
-            </Suspense>
+
 
         );
     }

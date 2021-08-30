@@ -3,7 +3,7 @@ import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
 // setInterval( () =>{ //reselectors test mdtp 1000ms and no render
@@ -12,11 +12,11 @@ import {Provider} from "react-redux";
 
  ReactDOM.render(
         <React.StrictMode>
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <HashRouter>
                 <Provider store={store}>
                      <App/>
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
