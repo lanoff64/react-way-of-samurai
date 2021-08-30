@@ -2,7 +2,7 @@
   "name": "way-of-samurai",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lanoff64.github.io/react-way-of-samurai/",
+  "homepage": "https://lanoff64.github.io/react-way-of-samurai",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
