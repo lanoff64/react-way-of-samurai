@@ -14,7 +14,7 @@ const Profile = (props) => {
         <div>
             {/*<Wallpaper/>*/}
             <div className={classes.afterWall}>
-                <Description profile={props.profile}/>
+                <Description isOwner={props.isOwner} profile={props.profile}/>
                 {/*<AboutMe about={props.about} updateUserAbout={props.updateUserAbout}/>*/}
                 <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus} />
                 {/*<ProfileStatus2/>*/}

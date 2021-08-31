@@ -4,7 +4,7 @@ import Preloader from "../../commons/Preloader/Preloader";
 import UserPhoto from "./../../../assets/images/no-user-26.jpg"
 
 
-const Description = ({profile}) => {
+const Description = ({profile, ...props}) => {
 
     if (!profile) {
         return <Preloader/>
@@ -13,9 +13,9 @@ const Description = ({profile}) => {
     return (
         <div className={classes.avaAndDesc}>
             <div className={classes.ava}>
-                <img src={profile.photos.large ? profile.photos.large : UserPhoto} alt="avatar"/>
+                <img src={profile.photos.large || UserPhoto} alt="avatar"/>
             </div>
-            <input type="file"/>
+            {props.isOwner ?  <input type="file"/> : null}
             <div className={classes.about}>
                 <div className={classes.userDecsName}>{profile.fullName}</div>
                 <div className={classes.divDescLabel}>ID: {profile.userId}</div>
