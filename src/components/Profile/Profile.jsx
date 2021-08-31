@@ -8,13 +8,13 @@ import ProfileStatusHooks from "./ProfileStatus/ProfileStatusHooks";
 //import AboutMe from "./Description/AboutMe/AboutMe";
 
 
-const Profile = (props) => {
+const Profile = ({...props}) => {
 
     return (
         <div>
             {/*<Wallpaper/>*/}
             <div className={classes.afterWall}>
-                <Description isOwner={props.isOwner} profile={props.profile}/>
+                <Description {...props} isOwner={props.isOwner} profile={props.profile}/>
                 {/*<AboutMe about={props.about} updateUserAbout={props.updateUserAbout}/>*/}
                 <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus} />
                 {/*<ProfileStatus2/>*/}

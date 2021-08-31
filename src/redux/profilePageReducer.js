@@ -4,6 +4,7 @@ const ADD_POST = "network/profile/ADD-POST";
 const SET_USERS_PROFILE = "network/profile/SET_USERS_PROFILE";
 const SET_USERS_STATUS = "network/profile/SET_USERS_STATUS";
 const SET_USER_ABOUT = "network/profile/SET_USER_ABOUT";
+const SET_MAIN_PHOTO = "network/profile/SET_MAIN_PHOTO";
 
 let initialState = {
     postsState: [
@@ -41,6 +42,9 @@ const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 aboutMe: action.aboutMe,
             }
+        case SET_MAIN_PHOTO:
+            return {...state, profile: {...state.profile,photos:action.file}
+            }
         default:
             return state;
     }
@@ -51,6 +55,7 @@ export const addPostAC = (postText) => ({type: ADD_POST, postText: postText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
+export const setMainPhoto = (file) => ({type: SET_MAIN_PHOTO, file});
 
 
 export const getProfileThunk = (userId) => {
@@ -74,6 +79,13 @@ export const updateStatus = (status) => {
             dispatch(setUsersStatus(status));
         }
     }
+}
+export const savePhotoThunk = (file) =>  async (dispatch) => {
+        let response = await profileAPI.setMainPhotoApi(file);
+        if (response.data.resultCode === 0) {
+            dispatch(setMainPhoto(response.data.data.photos));
+        }
+
 }
 
 export const updateUserAbout = (aboutMe, FullName, LookingForAJobDescription, contacts) => {

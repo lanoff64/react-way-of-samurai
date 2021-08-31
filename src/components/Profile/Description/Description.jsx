@@ -10,12 +10,17 @@ const Description = ({profile, ...props}) => {
         return <Preloader/>
     }
 
+    const onMainPhotoSelected=(e)=>{
+        if(e.target.files.length){
+            props.savePhotoThunk(e.target.files[0]);
+        }
+    }
     return (
         <div className={classes.avaAndDesc}>
             <div className={classes.ava}>
                 <img src={profile.photos.large || UserPhoto} alt="avatar"/>
             </div>
-            {props.isOwner ?  <input type="file"/> : null}
+            {props.isOwner ?  <input type="file" onChange={onMainPhotoSelected}/> : null}
             <div className={classes.about}>
                 <div className={classes.userDecsName}>{profile.fullName}</div>
                 <div className={classes.divDescLabel}>ID: {profile.userId}</div>
