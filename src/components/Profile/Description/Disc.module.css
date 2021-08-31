@@ -30,6 +30,10 @@
     align-items: center;
     background-color: ghostwhite;
 }
+
+.fileBtn{
+    display: none;
+}
 .about {
     grid-area: about;
     background-color: white;
