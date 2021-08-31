@@ -15,6 +15,7 @@ const Description = ({profile}) => {
             <div className={classes.ava}>
                 <img src={profile.photos.large ? profile.photos.large : UserPhoto} alt="avatar"/>
             </div>
+            <input type="file"/>
             <div className={classes.about}>
                 <div className={classes.userDecsName}>{profile.fullName}</div>
                 <div className={classes.divDescLabel}>ID: {profile.userId}</div>
