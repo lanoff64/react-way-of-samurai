@@ -5,6 +5,7 @@ const SET_USERS_PROFILE = "network/profile/SET_USERS_PROFILE";
 const SET_USERS_STATUS = "network/profile/SET_USERS_STATUS";
 const SET_USER_ABOUT = "network/profile/SET_USER_ABOUT";
 const SET_MAIN_PHOTO = "network/profile/SET_MAIN_PHOTO";
+const TOGGLE_IS_DOWNLOAD = "network/profile/TOGGLE_IS_DOWNLOAD";
 
 let initialState = {
     postsState: [
@@ -15,7 +16,8 @@ let initialState = {
     ],
     profile: null,
     status: '',
-    aboutMe: null
+    aboutMe: null,
+    isDownload:false
 };
 
 
@@ -45,6 +47,12 @@ const profilePageReducer = (state = initialState, action) => {
         case SET_MAIN_PHOTO:
             return {...state, profile: {...state.profile,photos:action.file}
             }
+        case TOGGLE_IS_DOWNLOAD: {
+            return {
+                ...state,
+                isDownload: action.isDownload
+            }
+        }
         default:
             return state;
     }
@@ -56,6 +64,7 @@ export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
 export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
 export const setMainPhoto = (file) => ({type: SET_MAIN_PHOTO, file});
+export const toggleIsDownLoad = (isDownload) => ({type: TOGGLE_IS_DOWNLOAD, isDownload});
 
 
 export const getProfileThunk = (userId) => {
@@ -81,7 +90,9 @@ export const updateStatus = (status) => {
     }
 }
 export const savePhotoThunk = (file) =>  async (dispatch) => {
+        dispatch(toggleIsDownLoad(true));
         let response = await profileAPI.setMainPhotoApi(file);
+        dispatch(toggleIsDownLoad(false));
         if (response.data.resultCode === 0) {
             dispatch(setMainPhoto(response.data.data.photos));
         }

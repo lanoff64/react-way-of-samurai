@@ -22,7 +22,14 @@
     margin-top: 5px;
     margin-left: 5px;
 }
-
+.loading{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ghostwhite;
+}
 .about {
     grid-area: about;
     background-color: white;

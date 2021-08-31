@@ -17,10 +17,6 @@ class ProfileContainer extends React.Component {
 
     refreshProfile(){
         let userId = this.props.match.params.userId;
-        // if(userId === this.props.authorizedUserId.toString()){
-        //     this.props.getProfileThunk(userId);
-        //     this.props.getUsersStatus(userId);
-        // }
         if (!userId) {
             userId = this.props.authorizedUserId; //hardCode was 2
             if(!userId) {
@@ -48,7 +44,7 @@ class ProfileContainer extends React.Component {
 
         return (
             <Profile {...this.props}
-            isOwner={!this.props.match.params.userId || this.props.authorizedUserId}/>
+            isOwner={!this.props.match.params.userId }/>
 
         );
     }
@@ -59,7 +55,8 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.status,
     aboutMe:state.profilePage.aboutMe,
     authorizedUserId:state.auth.id,
-    isAuth:state.auth.isAuth
+    isAuth:state.auth.isAuth,
+    isDownload:state.profilePage.isDownload
 })
 
 
