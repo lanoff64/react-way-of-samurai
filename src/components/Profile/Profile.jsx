@@ -11,7 +11,7 @@ import ProfileStatusHooks from "./ProfileStatus/ProfileStatusHooks";
 const Profile = ({...props}) => {
 
     return (
-        <div>
+        <div className={classes.allProfile}>
             {/*<Wallpaper/>*/}
             <div className={classes.afterWall}>
                 <Description {...props} isOwner={props.isOwner} profile={props.profile}/>

@@ -1,32 +1,32 @@
 .avaAndDesc {
-    max-width: 600px;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: 1fr  3fr;
-    grid-template-areas:"avatar about";
-    grid-gap: 2px;
+    grid-template-columns: 1fr  2fr;
+    grid-template-areas:"name name"
+                        "avatar about";
+    grid-gap: 5px;
     background-color: steelblue;
     padding: 5px;
 
 }
-
-
-.ava {
-    background-color: rgba(210, 243, 241, 0.7);
+.avaImg {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.ava img {
-    width: 200px;
+.avaImg img{
+    width: 300px;
     grid-area: avatar;
-    border-radius: 3px;
-    border: 2px solid white;
-    margin-top: 5px;
-    margin-left: 5px;
+    border-radius: 2px;
+    border: 1px solid black;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.ava:focus img{
-    border: 10px solid black;
-}
+
 
 .loading{
     height: 200px;
@@ -57,6 +57,7 @@
     margin: 0 0 0 0;
 }
 .userDecsName{
+    grid-area: name;
     font-size: 20px;
     text-align: center;
     color: black;
