@@ -3,74 +3,55 @@ import classes from './Disc.module.css';
 import UserPhoto from "./../../../assets/images/no-user-26.jpg"
 import Preloader from "../../commons/Preloader/Preloader";
 import SettingBtn from "../../commons/SettingBtn";
+import useToggle from "../../commons/useToggle";
 
 
 const PersonAvatar = ({profile, ...props}) => {
-
+    //переключатель на хуке
     let [editMode, setEditMode] = useToggle();
 
-
-    const activeEditMode = () => {
+    const editModeToggle = () => {
         setEditMode();
     }
-
-//переключатель на хуке
-    function useToggle(initialValue = false) {
-        const [value, setValue] = React.useState(initialValue);
-        const toggle = React.useCallback(() => {
-            setValue(v => !v);
-        }, []);
-        return [value, toggle];
-    }
-
-
 
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
             props.savePhotoThunk(e.target.files[0]);
-            setEditMode();
+            editModeToggle();
         }
     }
 //значение src аватарки
     const imgSrc = profile.photos.large || UserPhoto;
-
-
-
+    //значенеие isDownload меняется перед запросом и сразу после получения аватарки
+    //при клике вкл. едит мод-file input
+    //если едит мод не включен, ничего не показывай
+    //иначе осветлить фон и если владелец показать кнопку
+    //кнопка не доступна если идет загрузка
+    //кнопка для отмены
 
     return (
-                   <div className={classes.avaImg} >
-                {/*значенеие isDownload меняется перед запросом и сразу после
-                получения аватарки*/}
-                {props.isDownload ?
-                    <div className={classes.loading}><Preloader/></div> :
-
-                    <img src={imgSrc} alt="avatar"/>
-                }
-                       {/*{при клике вкл едит мод-file input  }*/}
-                       {props.isOwner?
-                <div className={classes.settingBtn} onClick={activeEditMode}>
-                 <SettingBtn />
+        <div className={classes.avaImg}>
+            {props.isDownload ?
+                <div className={classes.loading}>
+                    <Preloader/>
+                </div> :
+                <img src={imgSrc} alt="avatar"/>}
+            {props.isOwner ?
+                <div className={classes.settingBtn} >
+                    <SettingBtn isDownload={props.isDownload} onClick={editModeToggle}/>
+                </div> : null}
+            {!editMode && null}
+            {editMode &&
+            <div>
+                <div className={classes.selectImg}> </div>
+                <div className={classes.avatarInp}>
+                    {props.isOwner ?
+                        <input type="file" onChange={onMainPhotoSelected}/> : null}
+                        <input type="button" onClick={editModeToggle} value={'отмена'}/>
                 </div>
-                           :
-                           null}
-                       {/*если едит мод не включен, ничего не показывай*/}
-                {!editMode && null}
-                       {/*иначе осветлить фон..*/}
-                {editMode &&
-                    <div>
-                        <div className={classes.selectImg}> </div>
-                        {/*...и если владелец показать кнопку*/}
-                        <div className={classes.avatarInp} >
-                            {/*кнопка не доступна если идет загрузка*/}
-                            {props.isOwner ? <input disabled={props.isDownload} type="file" onChange={onMainPhotoSelected}/> : null}
-                            {/*кнопка для отмены*/}
-                            <input type="button" onClick={activeEditMode} value={'отмена'}/>
-                        </div>
-                    </div>}
-            </div>
+            </div>}
 
-
+        </div>
     );
-
 }
 export default PersonAvatar;
