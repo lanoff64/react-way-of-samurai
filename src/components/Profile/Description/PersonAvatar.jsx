@@ -36,8 +36,11 @@ const PersonAvatar = ({profile, ...props}) => {
                 {props.isDownload ? <div className={classes.loading}><Preloader/></div> : <img src={imgSrc} alt="avatar"/>}
                 {!editMode && null}
                 {editMode &&
-                    <div className={classes.avatarInp}>
-                {props.isOwner ? <input disabled={props.isDownload} type="file" onChange={onMainPhotoSelected}/> : null}
+                    <div>
+                        <div className={classes.selectImg}> </div>
+                        <div className={classes.avatarInp} >
+                            {props.isOwner ? <input disabled={props.isDownload} type="file" onChange={onMainPhotoSelected}/> : null}
+                        </div>
                     </div>}
             </div>
 

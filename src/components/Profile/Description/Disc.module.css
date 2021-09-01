@@ -10,12 +10,13 @@
 
 }
 .avaImg {
+    z-index: 1;
+    position: relative;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 2;
+
 }
 
 .avaImg img{
@@ -75,11 +76,23 @@
     padding-left: 5px;
 }
 
+
+.selectImg{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background-color:  rgba(205, 214, 219, 0.3);
+}
+
+
 .avatarInp {
+    z-index: 3;
     position: absolute;
     bottom:  0;
     left: 0;
     color: red;
-    z-index: 3;
     background-color: black;
 }
