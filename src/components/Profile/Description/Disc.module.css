@@ -105,5 +105,9 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    display: none;
+}
+
+.avaImg:hover .settingBtn{
     display: inline-block;
 }

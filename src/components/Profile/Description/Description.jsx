@@ -15,17 +15,17 @@ const Description = ({profile, ...props}) => {
 
     return (
         <div className={classes.avaAndDesc} >
+
             <div className={classes.userDecsName} >
                 {profile.fullName}
-                <div className={classes.divDescLabel}>ID: {profile.userId}</div>
+                <div className={classes.divDescLabel}>
+                    ID: {profile.userId}
+                </div>
             </div>
 
-            <PersonAvatar
-                profile={profile}
-                {...props}/>
+            <PersonAvatar profile={profile} {...props}/>
 
-            <PersonInfo
-                profile={profile}/>
+            <PersonInfo profile={profile}/>
 
         </div>
     );
