@@ -21,7 +21,6 @@ const Description = ({profile, ...props}) => {
         if (e.target.files.length) {
             props.savePhotoThunk(e.target.files[0]);
             setEditMode(false);
-
         }
     }
 

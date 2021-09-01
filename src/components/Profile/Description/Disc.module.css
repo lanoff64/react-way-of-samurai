@@ -14,6 +14,7 @@
     background-color: rgba(210, 243, 241, 0.7);
 }
 
+
 .ava img {
     width: 200px;
     grid-area: avatar;
@@ -21,7 +22,12 @@
     border: 2px solid white;
     margin-top: 5px;
     margin-left: 5px;
+    cursor: pointer;
 }
+.ava:focus img{
+    border: 10px solid black;
+}
+
 .loading{
     height: 200px;
     width: 200px;
@@ -31,9 +37,7 @@
     background-color: ghostwhite;
 }
 
-.fileBtn{
-    display: none;
-}
+
 .about {
     grid-area: about;
     background-color: white;
