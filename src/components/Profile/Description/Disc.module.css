@@ -94,11 +94,15 @@
     left: 0;
     color: red;
     background-color: black;
+    margin: 5px;
+}
+
+.avatarInp input{
+    margin: 2px;
 }
 
 .settingBtn{
     position: absolute;
     top: 5px;
     right: 5px;
-    /*display: none;*/
 }

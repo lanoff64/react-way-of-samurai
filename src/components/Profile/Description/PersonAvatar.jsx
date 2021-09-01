@@ -9,6 +9,7 @@ const PersonAvatar = ({profile, ...props}) => {
 
     let [editMode, setEditMode] = useToggle();
 
+
     const activeEditMode = () => {
         setEditMode();
     }
@@ -33,20 +34,37 @@ const PersonAvatar = ({profile, ...props}) => {
 //значение src аватарки
     const imgSrc = profile.photos.large || UserPhoto;
 
+
+
+
     return (
-            <div className={classes.avaImg} onDoubleClick={activeEditMode} >
+                   <div className={classes.avaImg} >
                 {/*значенеие isDownload меняется перед запросом и сразу после
                 получения аватарки*/}
-                {props.isDownload ? <div className={classes.loading}><Preloader/></div> : <img src={imgSrc} alt="avatar"/>}
-                <div className={classes.settingBtn}>
+                {props.isDownload ?
+                    <div className={classes.loading}><Preloader/></div> :
+
+                    <img src={imgSrc} alt="avatar"/>
+                }
+                       {/*{при клике вкл едит мод-file input  }*/}
+                       {props.isOwner?
+                <div className={classes.settingBtn} onClick={activeEditMode}>
                  <SettingBtn />
                 </div>
+                           :
+                           null}
+                       {/*если едит мод не включен, ничего не показывай*/}
                 {!editMode && null}
+                       {/*иначе осветлить фон..*/}
                 {editMode &&
                     <div>
                         <div className={classes.selectImg}> </div>
+                        {/*...и если владелец показать кнопку*/}
                         <div className={classes.avatarInp} >
+                            {/*кнопка не доступна если идет загрузка*/}
                             {props.isOwner ? <input disabled={props.isDownload} type="file" onChange={onMainPhotoSelected}/> : null}
+                            {/*кнопка для отмены*/}
+                            <input type="button" onClick={activeEditMode} value={'отмена'}/>
                         </div>
                     </div>}
             </div>
