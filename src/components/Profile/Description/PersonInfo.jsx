@@ -8,10 +8,10 @@ const PersonInfo = ({profile,status,updateStatus,...props}) => {
 
             <div className={classes.about}>
 
-                <div>
+
                     <ProfileStatusHooks status={status} updateStatus={updateStatus} />
 
-                    <div className={classes.descLinks}>
+                    <div className={classes.links}>
                         <span className={classes.divDescLabel}>Links:</span>
                         <div>
                             {profile.contacts.facebook}
@@ -35,7 +35,7 @@ const PersonInfo = ({profile,status,updateStatus,...props}) => {
                             {profile.contacts.github}
                         </div>
                     </div>
-                </div>
+
 
                 <div className={classes.divDesc}>
                     <div><span className={classes.divDescLabel}>О себе:</span> {profile.aboutMe}</div>
