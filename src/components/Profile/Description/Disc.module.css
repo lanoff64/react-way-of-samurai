@@ -1,8 +1,9 @@
 .avaAndDesc {
     max-width: 100%;
     display: grid;
-    grid-template-columns: 1fr  2fr;
-    grid-template-areas:"name name"
+    grid-template-columns: 300px  450px;
+    grid-template-rows: 35px 300px;
+    grid-template-areas:"name about"
                         "avatar about";
     grid-gap: 5px;
     background-color: steelblue;
@@ -54,19 +55,30 @@
 }
 
 .divDescLabel{
-    color: grey;
-    margin: 0 0 0 0;
+    display: inline-block;
+    padding-left: 5px;
 }
 .userDecsName{
     grid-area: name;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: black;
     background-color: white;
     box-shadow: 0 0 10px lightskyblue inset;
     padding: 10px;
     text-shadow: 0 2px 0 gold;
+    position: relative;
 }
+.divDescLabelName{
+    position: absolute;
+    top:0;
+    right: 0;
+    display: inline-block;
+    font-size: 12px;
+    font-style: italic;
+    padding: 2px;
+}
+
 .descLinks{
     font-style: italic;
     color: blue;

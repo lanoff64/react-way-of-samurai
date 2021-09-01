@@ -1,16 +1,18 @@
 import React from "react";
 import classes from './Disc.module.css';
+import ProfileStatusHooks from "../ProfileStatus/ProfileStatusHooks";
 
-const PersonInfo = ({profile,...props}) => {
+const PersonInfo = ({profile,status,updateStatus,...props}) => {
 
     return (
-        <div>
 
             <div className={classes.about}>
 
                 <div>
-                    <span className={classes.divDescLabel}>Links:</span>
+                    <ProfileStatusHooks status={status} updateStatus={updateStatus} />
+
                     <div className={classes.descLinks}>
+                        <span className={classes.divDescLabel}>Links:</span>
                         <div>
                             {profile.contacts.facebook}
                         </div>
@@ -50,7 +52,6 @@ const PersonInfo = ({profile,...props}) => {
 
                 </div>
             </div>
-        </div>
 
 
     );

@@ -6,7 +6,7 @@ import PersonAvatar from "./PersonAvatar";
 
 
 
-const Description = ({profile, ...props}) => {
+const Description = ({profile,updateStatus,status, ...props}) => {
     if (!profile) {
         return <Preloader/>
     }
@@ -18,14 +18,14 @@ const Description = ({profile, ...props}) => {
 
             <div className={classes.userDecsName} >
                 {profile.fullName}
-                <div className={classes.divDescLabel}>
-                    ID: {profile.userId}
+                <div className={classes.divDescLabelName}>
+                    id: {profile.userId}
                 </div>
             </div>
 
             <PersonAvatar profile={profile} {...props}/>
 
-            <PersonInfo profile={profile}/>
+            <PersonInfo updateStatus={updateStatus} status={status} profile={profile}/>
 
         </div>
     );

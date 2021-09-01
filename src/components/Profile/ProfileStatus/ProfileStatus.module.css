@@ -1,10 +1,13 @@
 .status{
-    margin: 30px;
+    padding: 5px;
 }
-.status_span{
-    border: 1px solid black;
-    display: inline-block;
-    padding: 10px;
-    min-height: 25px;
-    min-width: 460px;
+.textArea{
+
+}
+
+.statusArea{
+    width: 435px;
+    word-wrap:break-word;
+    font-style: italic;
+    font-size: 13px;
 }

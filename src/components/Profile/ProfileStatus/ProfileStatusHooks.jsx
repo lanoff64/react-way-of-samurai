@@ -33,18 +33,17 @@ const ProfileStatusHooks = (props) => {
                 <div
                     onDoubleClick={activeEditMode}
                     className={classes.status}>
-                    <div> Status:</div>
                     {!editMode &&
-                    <div className={classes.status_span}>
-                        <div>{props.status || '--------'}</div>
+                    <div className={classes.statusArea}>
+                        {props.status || '----'}
                     </div>
                     }
 
                     {editMode &&
-                    <div className={classes.status_span}>
-                        <input
+                    <div className={classes.textArea}>
+                        <textarea
                             maxLength="300"
-                            size={58}
+                            cols="50" rows="6"
                             placeholder={'Ваш статус'}
                             onChange={onStatusChange}
                             autoFocus={true}
