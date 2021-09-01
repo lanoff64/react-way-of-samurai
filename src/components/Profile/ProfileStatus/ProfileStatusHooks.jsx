@@ -43,7 +43,7 @@ const ProfileStatusHooks = (props) => {
                     <div className={classes.textArea}>
                         <textarea
                             maxLength="300"
-                            cols="50" rows="6"
+                            cols="60" rows="5"
                             placeholder={'Ваш статус'}
                             onChange={onStatusChange}
                             autoFocus={true}

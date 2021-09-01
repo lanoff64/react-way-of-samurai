@@ -75,8 +75,9 @@
     right: 0;
     display: inline-block;
     font-size: 12px;
-    font-style: italic;
     padding: 2px;
+    font-family: monospace;
+    color: blue;
 }
 
 .descLinks{
@@ -105,7 +106,7 @@
     bottom:  0;
     left: 0;
     color: red;
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0.6);
     margin: 5px;
 }
 

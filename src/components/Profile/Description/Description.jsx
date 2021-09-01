@@ -19,7 +19,7 @@ const Description = ({profile,updateStatus,status, ...props}) => {
             <div className={classes.userDecsName} >
                 {profile.fullName}
                 <div className={classes.divDescLabelName}>
-                    id: {profile.userId}
+                    id:{profile.userId}
                 </div>
             </div>
 

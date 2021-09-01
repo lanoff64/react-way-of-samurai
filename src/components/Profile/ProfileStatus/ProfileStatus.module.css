@@ -1,8 +1,14 @@
 .status{
     padding: 5px;
 }
-.textArea{
-
+.textArea textarea{
+    width: 435px;
+    height: 90px;
+    font-style: italic;
+    font-size: 13px;
+    outline: none;
+    -moz-appearance: none;
+    resize: none;
 }
 
 .statusArea{
@@ -10,4 +16,7 @@
     word-wrap:break-word;
     font-style: italic;
     font-size: 13px;
+    margin: 5px;
+    border: 1px solid rgba(1, 1, 1, 0.1);
+    display: inline-block;
 }
