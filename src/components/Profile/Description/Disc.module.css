@@ -14,6 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .avaImg img{
@@ -29,8 +31,8 @@
 
 
 .loading{
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +47,6 @@
 
 }
 .divDesc {
-    /*background-color: skyblue;*/
     margin: 0 auto;
     color: black;
     padding: 10px;
@@ -71,4 +72,14 @@
     color: blue;
     text-decoration: underline;
     cursor: pointer;
+    padding-left: 5px;
+}
+
+.avatarInp {
+    position: absolute;
+    bottom:  0;
+    left: 0;
+    color: red;
+    z-index: 3;
+    background-color: black;
 }

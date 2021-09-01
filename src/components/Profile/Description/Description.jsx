@@ -5,13 +5,17 @@ import PersonInfo from "./PersonInfo";
 import PersonAvatar from "./PersonAvatar";
 
 
+
 const Description = ({profile, ...props}) => {
     if (!profile) {
         return <Preloader/>
     }
+
+
+
     return (
-        <div className={classes.avaAndDesc}>
-            <div className={classes.userDecsName}>
+        <div className={classes.avaAndDesc} >
+            <div className={classes.userDecsName} >
                 {profile.fullName}
                 <div className={classes.divDescLabel}>ID: {profile.userId}</div>
             </div>
