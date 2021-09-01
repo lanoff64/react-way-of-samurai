@@ -24,7 +24,6 @@
     grid-area: avatar;
     border-radius: 2px;
     border: 1px solid black;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,4 +94,11 @@
     left: 0;
     color: red;
     background-color: black;
+}
+
+.settingBtn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    /*display: none;*/
 }

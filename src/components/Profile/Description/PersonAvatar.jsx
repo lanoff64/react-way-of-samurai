@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from './Disc.module.css';
 import UserPhoto from "./../../../assets/images/no-user-26.jpg"
 import Preloader from "../../commons/Preloader/Preloader";
+import SettingBtn from "../../commons/SettingBtn";
 
 
 const PersonAvatar = ({profile, ...props}) => {
@@ -12,6 +13,7 @@ const PersonAvatar = ({profile, ...props}) => {
         setEditMode();
     }
 
+//переключатель на хуке
     function useToggle(initialValue = false) {
         const [value, setValue] = React.useState(initialValue);
         const toggle = React.useCallback(() => {
@@ -28,12 +30,17 @@ const PersonAvatar = ({profile, ...props}) => {
             setEditMode();
         }
     }
-
+//значение src аватарки
     const imgSrc = profile.photos.large || UserPhoto;
 
     return (
             <div className={classes.avaImg} onDoubleClick={activeEditMode} >
+                {/*значенеие isDownload меняется перед запросом и сразу после
+                получения аватарки*/}
                 {props.isDownload ? <div className={classes.loading}><Preloader/></div> : <img src={imgSrc} alt="avatar"/>}
+                <div className={classes.settingBtn}>
+                 <SettingBtn />
+                </div>
                 {!editMode && null}
                 {editMode &&
                     <div>
