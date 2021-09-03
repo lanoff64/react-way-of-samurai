@@ -1,42 +1,55 @@
 
 .header {
     grid-area: h;
-    background: url("https://img.freepik.com/free-vector/set-of-different-cartoon-clouds-isolated-on-blue-sky_42875-591.jpg?size=626&ext=jpg");
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-}
-
-.header img {
-    width: 60px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
-    margin: 5px 0 3px 10px;
-    background-color: white;
-    border-radius: 10px;
+    background-color: #303B44;
+    text-align: center;
 }
 
 .loginBlock {
     float: right;
     color: black;
-    cursor: pointer;
-    height: 43px;
+    height: 60px;
+    max-width: 180px;
     border: 1px solid black;
     text-shadow: 0 0 1px black ;
     background-color: white;
-    margin: 0 auto;
-    padding: 25px 10px 0 10px;
+    margin: 2px;
+    display: grid;
+    grid-template-areas: "login ava"
+                         "btn ava";
+
+    grid-template-rows: auto;
+    grid-template-columns: auto 60px;
+    text-align: center;
 }
+
 
 .loginBlock a {
     color: black;
-
 }
+
 .avaLogin {
-    float: right;
-    margin: -30px 0;
-
+    grid-area: ava;
 }
 
 
-.avaLogin img{
-    margin: 10px 0 0 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+.loginBlock img{
+    width: 60px;
+    height: 60px;
+}
+
+.userLogin{
+    padding: 5px 5px 0 5px;
+    grid-area: login;
+}
+
+.outBtn{
+    grid-area: btn;
+}
+
+.headLogo img{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 2px;
 }

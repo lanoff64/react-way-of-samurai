@@ -1,7 +1,7 @@
 .nav {
     grid-area: n;
-    background-color: steelblue;
-    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3) inset;
+    background-color: #EDEEF0;
+
     padding: 80px 50px 10px 50px;
 
 }
@@ -11,7 +11,7 @@
 }
 
 .item a {
-    color: white;
+    color: #4B77A8;
     text-decoration: none;
 }
 
@@ -24,13 +24,14 @@
 }
 
 .item.friends {
-    color: white;
+    color: #4B77A8;
     font-size: large;
 }
 
 .navMargin {
     padding: 10px 20px 30px 20px;
-    box-shadow: 0 0 80px rgba(210, 243, 241, 0.2) inset;
+    text-shadow: 0 0 1px black;
+
 
 }
 
@@ -41,7 +42,7 @@
 
 .users a{
     text-decoration: none;
-    color: white;
+    color: #4B77A8;
 }
 
 .users a.activeLink {

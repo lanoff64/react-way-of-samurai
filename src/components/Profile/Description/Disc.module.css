@@ -5,8 +5,7 @@
     grid-template-rows: 35px 300px;
     grid-template-areas:"name about"
                         "avatar about";
-    grid-gap: 5px;
-    background-color: steelblue;
+    grid-gap: 10px;
     padding: 5px;
 
 }
@@ -17,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 
 }
 
@@ -24,10 +24,10 @@
     width: 300px;
     grid-area: avatar;
     border-radius: 2px;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 1px 5px black;
 }
 
 
@@ -44,7 +44,7 @@
 .about {
     grid-area: about;
     background-color: white;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 0 2px black;
     position: relative;
 
 }
@@ -67,20 +67,23 @@
     text-align: center;
     color: black;
     background-color: white;
-    box-shadow: 0 0 10px lightskyblue inset;
-    padding: 10px;
-    text-shadow: 0 2px 0 gold;
+    text-shadow: 0 0 2px black;
     position: relative;
+    box-shadow: 0 0 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 .divDescLabelName{
     position: absolute;
     top:0;
     right: 0;
     display: inline-block;
-    font-size: 12px;
+    font-size: 11px;
     padding: 2px;
     font-family: monospace;
-    color: blue;
 }
 
 .links{
