@@ -16,7 +16,7 @@
 }
 
 .item a.activeLink {
-    color: gold;
+    color: black;
 }
 
 .item.settings {
@@ -46,6 +46,6 @@
 }
 
 .users a.activeLink {
-    color: gold;
+    color: black;
 }
 
