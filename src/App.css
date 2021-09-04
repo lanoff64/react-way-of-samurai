@@ -3,12 +3,8 @@
     display: grid;
     width: 1000px;
 
-    grid-template-areas: "h h"
-                         "n c";
-
-    grid-template-rows: 66px;
+    grid-template-areas: "n c";
     grid-template-columns: 200px 800px;
-
 }
 
 .app-wrapper-content {
@@ -17,3 +13,4 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
+

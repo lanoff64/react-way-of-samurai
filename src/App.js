@@ -2,7 +2,7 @@ import './App.css';
 import React, {Suspense} from "react";
 import {Route, withRouter} from "react-router-dom";
 import NavBarContainer from "./components/NavBar/NavBarContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import HeaderHtmlContainer from "./components/HeaderHtml/HeaderHtmlContainer";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -28,25 +28,28 @@ class App extends React.Component {
             return <Preloader/>
         }
         return (
+<div>
+    <HeaderHtmlContainer/>
+    <div className='app-wrapper'>
+        {/*<HeaderContainer/>*/}
+        <NavBarContainer/>
+        <div className='app-wrapper-content'>
+            <Suspense fallback={<Preloader/>}>
+                <Route path='/dialogs'
+                       render={() => <DialogsContainer/>}/>
+                <Route path='/profile/:userId?'
+                       render={() => <ProfileContainer/>}/>
+                <Route path='/users'
+                       render={() => <UsersContainer/>}/>
+                <Route path='/music' component={Music}/>
+                <Route path='/news' component={News}/>
+                <Route path='/settings' component={Settings}/>
+                <Route path='/login' component={LoginContainer}/>
+            </Suspense>
+        </div>
+    </div>
+</div>
 
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <NavBarContainer/>
-                <div className='app-wrapper-content'>
-                    <Suspense fallback={<Preloader/>}>
-                        <Route path='/dialogs'
-                               render={() => <DialogsContainer/>}/>
-                        <Route path='/profile/:userId?'
-                               render={() => <ProfileContainer/>}/>
-                        <Route path='/users'
-                               render={() => <UsersContainer/>}/>
-                        <Route path='/music' component={Music}/>
-                        <Route path='/news' component={News}/>
-                        <Route path='/settings' component={Settings}/>
-                        <Route path='/login' component={LoginContainer}/>
-                    </Suspense>
-                </div>
-            </div>
 
 
         );

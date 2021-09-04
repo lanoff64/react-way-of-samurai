@@ -1,0 +1,64 @@
+.wr1{
+    background-color: #303B44;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+}
+.wr1 img {
+    max-width: 100px;
+    max-height: 80px;
+}
+
+
+.loginBlock {
+    float: right;
+    color: white;
+    height: 60px;
+    max-width: 180px;
+    text-shadow: 0 0 1px black ;
+    margin: 2px;
+    display: grid;
+    grid-template-areas: "login ava"
+                         "btn ava";
+
+    grid-template-rows: auto;
+    grid-template-columns: auto 60px;
+    text-align: center;
+}
+
+.loginBlock a {
+    color: white;
+}
+
+
+.avaLogin {
+    grid-area: ava;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loginBlock img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+
+}
+
+.userLogin{
+    padding: 5px 5px 0 5px;
+    grid-area: login;
+}
+
+.outBtn{
+    grid-area: btn;
+}
+
+.headLogo img{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 5px 0 0 30px;
+}
