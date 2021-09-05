@@ -4,13 +4,12 @@ import React from "react";
 
 const ProfileLinks = ({profile}) => {
     return(
-        <div>
-            <div className={classes.links}>
+        <div className={classes.links}>
+
                 <span>Links:</span>
                 {Object.keys(profile.contacts).map(key =>
                     <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                 )}
-            </div>
         </div>
     )
  }
