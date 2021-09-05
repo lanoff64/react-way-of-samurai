@@ -5,27 +5,30 @@ import ProfileLinks from "../ProfileLinks/ProfileLinks";
 import AboutSelf from "../AboutSelf/AboutSelf";
 import LinksForm from "../ProfileLinks/LinksForm";
 
-const PersonInfo = ({profile,status,updateStatus,...props}) => {
+const PersonInfo = ({profile, status, updateStatus, ...props}) => {
 
-const [editMode, setEditMode] = useState(false);
+    const [editMode, setEditMode] = useState(false);
 
-const goToEditMode = () =>{
-    setEditMode(true);
-}
-const outEditMode = () => {
-    setEditMode(false);
-}
+    const goToEditMode = () => {
+        setEditMode(true);
+    }
+    const outEditMode = () => {
+        setEditMode(false);
+    }
 
     return (
-            <div className={classes.about}>
+        <div className={classes.about}>
 
-                    <ProfileStatusHooks status={status} updateStatus={updateStatus} />
-
-                {editMode ? <LinksForm outEditMode={outEditMode} profile={profile}/> : <ProfileLinks goToEditMode={goToEditMode} isOwner={props.isOwner} profile={profile}/>}
-
-                    <AboutSelf profile={profile}/>
-
+            <ProfileStatusHooks status={status} updateStatus={updateStatus}/>
+            <div className={classes.linksOrForm}>
+                <span>Links:</span>
+                {editMode ? <LinksForm outEditMode={outEditMode} profile={profile}/> :
+                    <ProfileLinks goToEditMode={goToEditMode} isOwner={props.isOwner} profile={profile}/>}
             </div>
+
+            <AboutSelf profile={profile}/>
+
+        </div>
     );
 }
 export default PersonInfo;

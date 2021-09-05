@@ -86,8 +86,22 @@
 .contacts{
     padding-left: 10px;
 }
+
+.contacts a{
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+}
+.contacts a:hover{
+    text-decoration: underline;
+}
+
+.contacts a:active {
+    color: cornflowerblue;
+}
+
 .links{
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 
@@ -125,4 +139,19 @@
 
 .avaImg:hover .settingBtn{
     display: inline-block;
+}
+
+.linksOrForm{
+    height: 200px;
+}
+.editBtn{
+    left: 0;
+    bottom: 0;
+}
+
+.noInfoContacts{
+    color: #3c4a55;
+    font-size: 13px;
+    font-family: monospace;
+    font-style: italic;
 }

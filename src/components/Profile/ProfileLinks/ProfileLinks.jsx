@@ -5,24 +5,36 @@ import React from "react";
 const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
 
     return(
-        <div className={classes.links}>
+        <div>
+            <div className={classes.links}>
 
-                <span>Links:</span>
+
                 {Object.keys(profile.contacts).map(key =>
                     <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                 )}
+
+            </div>
+
             <div>
                 {isOwner &&
-                <button onClick={goToEditMode}>Edit</button>}
+                <button className={classes.editBtn} onClick={goToEditMode}>Edit</button>}
             </div>
         </div>
+
     )
  }
 
 
 
 const Contacts = ({contactTitle, contactValue}) => {
-    return <div className={classes.contacts}> <b>{contactTitle}</b>: <a href={contactValue}>{contactValue}</a></div>
+    return (
+    <div className={classes.contacts}>
+        <b>{contactTitle}</b>:
+        {contactValue ?
+        <a href={contactValue}>{contactValue}</a>
+            : <span className={classes.noInfoContacts}>no information</span>}
+    </div>
+    );
 }
 
  export default ProfileLinks;
