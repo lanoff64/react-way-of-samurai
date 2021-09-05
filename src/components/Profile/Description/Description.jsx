@@ -17,7 +17,8 @@ const Description = ({profile,updateStatus,status, ...props}) => {
         <div className={classes.avaAndDesc} >
 
             <div className={classes.userDecsName} >
-                {profile.fullName}
+                {/*{profile.fullName}*/}
+                UserName
                 <div className={classes.divDescLabelName}>
                     id:{profile.userId}
                 </div>
@@ -28,6 +29,7 @@ const Description = ({profile,updateStatus,status, ...props}) => {
             <PersonInfo updateStatus={updateStatus} status={status} profile={profile}/>
 
         </div>
+
     );
 }
 export default Description;

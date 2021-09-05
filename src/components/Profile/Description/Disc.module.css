@@ -53,8 +53,6 @@
     color: black;
     padding: 10px;
     font-size: 15px;
-    position: absolute;
-    top: 240px;
 }
 
 .divDescLabel{
@@ -86,12 +84,11 @@
     font-family: monospace;
     text-shadow: none;
 }
-
+.contacts{
+    padding-left: 10px;
+}
 .links{
-    position: absolute;
-    padding-left: 5px;
-    top: 105px;
-    left: 0;
+    padding-left: 10px;
 }
 
 

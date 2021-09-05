@@ -3,7 +3,7 @@ import classes from './Disc.module.css';
 import ProfileStatusHooks from "../ProfileStatus/ProfileStatusHooks";
 
 const PersonInfo = ({profile,status,updateStatus,...props}) => {
-
+    debugger
     return (
 
             <div className={classes.about}>
@@ -12,28 +12,10 @@ const PersonInfo = ({profile,status,updateStatus,...props}) => {
                     <ProfileStatusHooks status={status} updateStatus={updateStatus} />
 
                     <div className={classes.links}>
-                        <span className={classes.divDescLabel}>Links:</span>
-                        <div>
-                            {profile.contacts.facebook}
-                        </div>
-                        <div>
-                            {profile.contacts.website}
-                        </div>
-                        <div>
-                            {profile.contacts.vk}
-                        </div>
-                        <div>
-                            {profile.contacts.twitter}
-                        </div>
-                        <div>
-                            {profile.contacts.instagram}
-                        </div>
-                        <div>
-                            {profile.contacts.youtube}
-                        </div>
-                        <div>
-                            {profile.contacts.github}
-                        </div>
+                        <span>Links:</span>
+                          {Object.keys(profile.contacts).map(key =>
+                        <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                    )}
                     </div>
 
 
@@ -56,4 +38,10 @@ const PersonInfo = ({profile,status,updateStatus,...props}) => {
 
     );
 }
+
+const Contacts = ({contactTitle, contactValue}) => {
+    return <div className={classes.contacts}> <b>{contactTitle}</b>: <a href={`https://${contactValue}`}>{contactValue}</a></div>
+}
+
+
 export default PersonInfo;
