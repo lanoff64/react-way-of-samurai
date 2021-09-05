@@ -3,6 +3,7 @@ import classes from './Disc.module.css';
 import Preloader from "../../commons/Preloader/Preloader";
 import PersonInfo from "./PersonInfo";
 import PersonAvatar from "./PersonAvatar";
+import UserName from "../UserName/UserName";
 
 
 
@@ -14,17 +15,10 @@ const Description = ({profile,updateStatus,status, ...props}) => {
 
 
     return (
-        <div className={classes.avaAndDesc} >
+        <div className={classes.avaAndDesc}>
 
-            <div className={classes.userDecsName} >
-                {profile.fullName}
-                <div className={classes.divDescLabelName}>
-                    id:{profile.userId}
-                </div>
-            </div>
-
+            <UserName profile={profile} />
             <PersonAvatar profile={profile} {...props}/>
-
             <PersonInfo updateStatus={updateStatus} status={status} profile={profile}/>
 
         </div>
