@@ -2,7 +2,8 @@ import classes from "../Description/Disc.module.css";
 import React from "react";
 
 
-const ProfileLinks = ({profile}) => {
+const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
+
     return(
         <div className={classes.links}>
 
@@ -10,9 +11,14 @@ const ProfileLinks = ({profile}) => {
                 {Object.keys(profile.contacts).map(key =>
                     <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                 )}
+            <div>
+                {isOwner &&
+                <button onClick={goToEditMode}>Edit</button>}
+            </div>
         </div>
     )
  }
+
 
 
 const Contacts = ({contactTitle, contactValue}) => {

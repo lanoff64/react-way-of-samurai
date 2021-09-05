@@ -19,7 +19,7 @@ const Description = ({profile,updateStatus,status, ...props}) => {
 
             <UserName profile={profile} />
             <PersonAvatar profile={profile} {...props}/>
-            <PersonInfo updateStatus={updateStatus} status={status} profile={profile}/>
+            <PersonInfo isOwner={props.isOwner} updateStatus={updateStatus} status={status} profile={profile}/>
 
         </div>
 
