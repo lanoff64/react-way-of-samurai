@@ -1,21 +1,16 @@
 import React from "react";
 import classes from './Disc.module.css';
 import ProfileStatusHooks from "../ProfileStatus/ProfileStatusHooks";
+import ProfileLinks from "../ProfileLinks/ProfileLinks";
 
 const PersonInfo = ({profile,status,updateStatus,...props}) => {
-    debugger
+
     return (
-
             <div className={classes.about}>
-
-
                     <ProfileStatusHooks status={status} updateStatus={updateStatus} />
 
                     <div className={classes.links}>
-                        <span>Links:</span>
-                          {Object.keys(profile.contacts).map(key =>
-                        <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-                    )}
+                        <ProfileLinks profile={profile}/>
                     </div>
 
 
@@ -39,9 +34,6 @@ const PersonInfo = ({profile,status,updateStatus,...props}) => {
     );
 }
 
-const Contacts = ({contactTitle, contactValue}) => {
-    return <div className={classes.contacts}> <b>{contactTitle}</b>: <a href={`https://${contactValue}`}>{contactValue}</a></div>
-}
 
 
 export default PersonInfo;

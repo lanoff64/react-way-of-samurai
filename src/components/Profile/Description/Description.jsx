@@ -17,8 +17,7 @@ const Description = ({profile,updateStatus,status, ...props}) => {
         <div className={classes.avaAndDesc} >
 
             <div className={classes.userDecsName} >
-                {/*{profile.fullName}*/}
-                UserName
+                {profile.fullName}
                 <div className={classes.divDescLabelName}>
                     id:{profile.userId}
                 </div>
