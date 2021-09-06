@@ -7,7 +7,7 @@ import UserName from "../UserName/UserName";
 
 
 
-const Description = ({profile,updateStatus,status, ...props}) => {
+const Description = ({profile,updateStatus,status,saveContacts, ...props}) => {
     if (!profile) {
         return <Preloader/>
     }
@@ -19,7 +19,7 @@ const Description = ({profile,updateStatus,status, ...props}) => {
 
             <UserName profile={profile} />
             <PersonAvatar profile={profile} {...props}/>
-            <PersonInfo isOwner={props.isOwner} updateStatus={updateStatus} status={status} profile={profile}/>
+            <PersonInfo saveContacts={saveContacts} isOwner={props.isOwner} updateStatus={updateStatus} status={status} profile={profile}/>
 
         </div>
 

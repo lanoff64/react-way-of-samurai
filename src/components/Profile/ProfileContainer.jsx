@@ -4,9 +4,9 @@ import {connect} from "react-redux";
 import {
     getProfileThunk,
     getUsersStatus,
+    saveContacts,
     savePhotoThunk,
     updateStatus,
-    updateUserAbout
 } from "../../redux/profilePageReducer";
 import {withRouter} from "react-router-dom"
 // import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
@@ -43,6 +43,7 @@ class ProfileContainer extends React.Component {
     render() {
 
         return (
+
             <Profile {...this.props}
             isOwner={!this.props.match.params.userId }/>
 
@@ -59,9 +60,8 @@ let mapStateToProps = (state) => ({
     isDownload:state.profilePage.isDownload
 })
 
-
 export default compose(
-    connect(mapStateToProps, {getProfileThunk,getUsersStatus,updateStatus, updateUserAbout,savePhotoThunk}),
+    connect(mapStateToProps, {getProfileThunk,getUsersStatus,updateStatus,savePhotoThunk,saveContacts}),
     withRouter,
     // withAuthRedirectComponent
 )(ProfileContainer);

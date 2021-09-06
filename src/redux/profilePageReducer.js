@@ -3,7 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = "network/profile/ADD-POST";
 const SET_USERS_PROFILE = "network/profile/SET_USERS_PROFILE";
 const SET_USERS_STATUS = "network/profile/SET_USERS_STATUS";
-const SET_USER_ABOUT = "network/profile/SET_USER_ABOUT";
+const SET_CONTACTS = "network/profile/SET_CONTACTS";
 const SET_MAIN_PHOTO = "network/profile/SET_MAIN_PHOTO";
 const TOGGLE_IS_DOWNLOAD = "network/profile/TOGGLE_IS_DOWNLOAD";
 
@@ -39,10 +39,10 @@ const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             }
-        case SET_USER_ABOUT:
+        case SET_CONTACTS:
             return {
                 ...state,
-                aboutMe: action.aboutMe,
+                aboutMe: action.contacts,
             }
         case SET_MAIN_PHOTO:
             return {...state, profile: {...state.profile,photos:action.file}
@@ -62,7 +62,7 @@ const profilePageReducer = (state = initialState, action) => {
 export const addPostAC = (postText) => ({type: ADD_POST, postText: postText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
-export const setUserAbout = (aboutMe) => ({type: SET_USER_ABOUT, aboutMe});
+export const setContacts = (contacts) => ({type: SET_CONTACTS, contacts});
 export const setMainPhoto = (file) => ({type: SET_MAIN_PHOTO, file});
 export const toggleIsDownLoad = (isDownload) => ({type: TOGGLE_IS_DOWNLOAD, isDownload});
 
@@ -99,11 +99,11 @@ export const savePhotoThunk = (file) =>  async (dispatch) => {
 
 }
 
-export const updateUserAbout = (aboutMe, FullName, LookingForAJobDescription, contacts) => {
+export const saveContacts = (contacts) => {
     return async (dispatch) => {
-        let response = await profileAPI.updateAboutMe(aboutMe, FullName, LookingForAJobDescription, contacts);
+        let response = await profileAPI.saveContacts(contacts);
         if (response.data.resultCode === 0) {
-            dispatch(setUserAbout(aboutMe));
+            dispatch(setContacts(contacts));
         }
     }
 }

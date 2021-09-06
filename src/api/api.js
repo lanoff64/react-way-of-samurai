@@ -54,26 +54,8 @@ export const profileAPI = {
             }
         } );
     },
-    updateAboutMe(aboutMe,FullName,LookingForAJobDescription = true,lookingForAJob=true,
-                  contacts={
-        facebook: "facebook.com/ruslan",
-        github: "github.com/ruslan",
-        instagram: "instagram.com/ruslan",
-        mainLink: null,
-        twitter: "https://twitter.com/@ruslan",
-        vk: "vk.com/ruslan",
-        website: 'ruslan.com',
-        youtube: 'https://www.youtube.com/channel/ruslan'
-
-    }){
-        return instance.put(`profile`,
-            {
-            aboutMe: aboutMe,
-            FullName:FullName,
-            LookingForAJobDescription:LookingForAJobDescription,
-            lookingForAJob,
-            contacts
-            });
+    saveContacts(contacts){
+        return instance.put(`profile`, contacts);
     }
 }
 
