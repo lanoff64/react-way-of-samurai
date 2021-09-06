@@ -69,7 +69,9 @@ export const toggleIsDownLoad = (isDownload) => ({type: TOGGLE_IS_DOWNLOAD, isDo
 export const getProfileThunk = (userId) => {
 
     return async (dispatch) => {
+        dispatch(toggleIsDownLoad(true));
         let response = await profileAPI.getProfile(userId);
+        dispatch(toggleIsDownLoad(false));
         dispatch(setUsersProfile(response.data));
     }
 }
