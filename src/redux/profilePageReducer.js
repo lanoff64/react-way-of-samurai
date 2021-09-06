@@ -41,8 +41,7 @@ const profilePageReducer = (state = initialState, action) => {
             }
         case SET_CONTACTS:
             return {
-                ...state,
-                aboutMe: action.contacts,
+                ...state, profile: {...state.profile,profile:action.profile}
             }
         case SET_MAIN_PHOTO:
             return {...state, profile: {...state.profile,photos:action.file}
@@ -62,7 +61,7 @@ const profilePageReducer = (state = initialState, action) => {
 export const addPostAC = (postText) => ({type: ADD_POST, postText: postText});
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status});
-export const setContacts = (contacts) => ({type: SET_CONTACTS, contacts});
+export const setContacts = (profile) => ({type: SET_CONTACTS, profile});
 export const setMainPhoto = (file) => ({type: SET_MAIN_PHOTO, file});
 export const toggleIsDownLoad = (isDownload) => ({type: TOGGLE_IS_DOWNLOAD, isDownload});
 
@@ -99,11 +98,12 @@ export const savePhotoThunk = (file) =>  async (dispatch) => {
 
 }
 
-export const saveContacts = (contacts) => {
-    return async (dispatch) => {
-        let response = await profileAPI.saveContacts(contacts);
+export const saveContacts = (profile) => {
+    return async (dispatch,getState) => {
+        const userId = getState().auth.id;
+        let response = await profileAPI.saveContacts(profile);
         if (response.data.resultCode === 0) {
-            dispatch(setContacts(contacts));
+            dispatch(getProfileThunk(userId));
         }
     }
 }
