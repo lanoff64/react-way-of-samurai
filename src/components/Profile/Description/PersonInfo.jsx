@@ -22,8 +22,10 @@ const PersonInfo = ({profile, status, updateStatus,saveContacts, ...props}) => {
             <ProfileStatusHooks isOwner={props.isOwner} status={status} updateStatus={updateStatus}/>
 
             <div className={classes.linksOrForm}>
-                <span>Links:</span>
-                {editMode ? <LinksForm initialValues={profile} saveContacts={saveContacts} outEditMode={outEditMode}/> :
+
+                {editMode ?
+                    <LinksForm profile={profile} initialValues={profile} saveContacts={saveContacts} outEditMode={outEditMode}/>
+                    :
                     <ProfileLinks goToEditMode={goToEditMode} isOwner={props.isOwner} profile={profile}/>}
             </div>
 

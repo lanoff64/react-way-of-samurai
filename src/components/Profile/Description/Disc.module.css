@@ -84,7 +84,7 @@
     text-shadow: none;
 }
 .contacts{
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .contacts a{
@@ -102,9 +102,15 @@
 
 .links{
     padding-left: 20px;
+    display: inline-block;
 }
 
 
+.formiklinks{
+    padding-left: 20px;
+    display: block;
+    vertical-align: top;
+}
 .selectImg{
     z-index: 2;
     position: absolute;
@@ -154,4 +160,26 @@
     font-size: 13px;
     font-family: monospace;
     font-style: italic;
+}
+
+.nameField{
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.nameField > div {
+    margin: 2px 5px 5px 0;
+}
+
+.fieldInpts{
+    display: inline-block;
+    vertical-align:top;
+}
+
+.contactsValues{
+    font-style: italic;
+    display: inline-block;
+    padding-left: 5px;
 }

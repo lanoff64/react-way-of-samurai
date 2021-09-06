@@ -6,7 +6,7 @@ const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
 
     return(
         <div>
-            <div className={classes.links}>
+            <div className={classes.nameField}>
 
 
                 {Object.keys(profile.contacts).map(key =>
@@ -29,10 +29,13 @@ const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
 const Contacts = ({contactTitle, contactValue}) => {
     return (
     <div className={classes.contacts}>
-        <b>{contactTitle}</b>:
-        {contactValue ?
-        <a href={contactValue}>{contactValue}</a>
-            : <span className={classes.noInfoContacts}>no information</span>}
+        {contactTitle}:
+        <div className={classes.contactsValues}>
+            {contactValue ?
+                <a href={contactValue}>{contactValue}</a>
+                : <span className={classes.noInfoContacts}>no information</span>}
+        </div>
+
     </div>
     );
 }
