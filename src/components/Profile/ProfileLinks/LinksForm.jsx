@@ -3,27 +3,11 @@ import classes from "../Description/Disc.module.css";
 import {Field, Form, Formik} from "formik";
 
 
-const LinksFormFormik = ({outEditMode,...props}) => {
+const LinksFormFormik = ({initialValues,outEditMode,...props}) => {
     return (
         <div>
             <Formik
-                initialValues={{
-                    aboutMe:"я крутой чувак 1001%",
-                    contacts:{
-                        facebook: 'facebook.com',
-                        website: 'facebook.com',
-                        vk: 'facebook.com',
-                        twitter: 'facebook.com',
-                        instagram: 'facebook.com',
-                        youtube: 'facebook.com',
-                        github: 'facebook.com',
-                        mainLink: 'facebook.com',
-                     },
-                    lookingForAJob: true,
-                    lookingForAJobDescription: 'ищу',
-                    fullName: "Samurai R"
-
-                }}
+                initialValues={initialValues}
                 onSubmit={(values) => {
                    props.saveContacts(values);
                     outEditMode();
@@ -59,10 +43,10 @@ const LinksFormFormik = ({outEditMode,...props}) => {
 }
 
 
-const LinksForm = ({outEditMode,saveContacts}) => {
+const LinksForm = ({outEditMode,saveContacts,initialValues}) => {
     return (
         <div>
-            <LinksFormFormik saveContacts={saveContacts} outEditMode={outEditMode}/>
+            <LinksFormFormik initialValues={initialValues} saveContacts={saveContacts} outEditMode={outEditMode}/>
         </div>
     );
 
