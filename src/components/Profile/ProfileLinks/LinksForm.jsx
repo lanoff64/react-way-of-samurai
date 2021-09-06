@@ -41,14 +41,13 @@ const LinksFormFormik = ({initialValues,outEditMode,...props}) => {
                                 </div>
                                 <div>
                                     <button type="submit">Save</button>
+                                    <button onClick={outEditMode}>Cancel</button>
                                 </div>
 
                             </div>
 
 
                         </Form>
-
-
                     )}
 
             </Formik>
