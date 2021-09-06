@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import classes from './ProfileStatus.module.css';
 
 
-const ProfileStatusHooks = (props) => {
+const ProfileStatusHooks = ({isOwner,...props}) => {
 
     let [editMode, setEditMode] = useState(false)
     let [status,setStatus] = useState(props.status);
@@ -29,8 +29,7 @@ const ProfileStatusHooks = (props) => {
         return (
 
             <div>
-
-                <div
+                {isOwner ?    <div
                     onDoubleClick={activeEditMode}
                     className={classes.status}>
                     {!editMode &&
@@ -54,6 +53,11 @@ const ProfileStatusHooks = (props) => {
                     </div>
                     }
                 </div>
+                    :
+                    <div className={classes.statusArea}>
+                        {props.status || '----'}
+                    </div> }
+
             </div>
         );
 

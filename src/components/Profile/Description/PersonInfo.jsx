@@ -19,7 +19,7 @@ const PersonInfo = ({profile, status, updateStatus,saveContacts, ...props}) => {
     return (
         <div className={classes.about}>
 
-            <ProfileStatusHooks status={status} updateStatus={updateStatus}/>
+            <ProfileStatusHooks isOwner={props.isOwner} status={status} updateStatus={updateStatus}/>
 
             <div className={classes.linksOrForm}>
                 <span>Links:</span>
