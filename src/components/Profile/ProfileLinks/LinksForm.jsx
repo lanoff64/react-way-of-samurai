@@ -72,6 +72,7 @@ export const LinksFormFormikAbout = ({initialValues,outEditMode,...props}) => {
                     (
                         <Form onSubmit={formik.handleSubmit}>
                             <div className={classes.nameField}>
+                                <div>Ваше Имя </div>
                                 <div>О себе: </div>
                                 <div>Ваши скиллы: </div>
                                 <div>Ищу работу: </div>
@@ -80,6 +81,7 @@ export const LinksFormFormikAbout = ({initialValues,outEditMode,...props}) => {
 
                             <div className={classes.fieldInpts}>
                                 <div>
+                                    <div><Field name="fullName" type="text" placeholder={'ваше Имя'}/></div>
                                     <div><Field name="aboutMe" type="text" placeholder={'расскажите о себе'}/></div>
                                     <div><Field name="lookingForAJobDescription" type="text" placeholder={'skills'}/></div>
                                     <div><Field name="lookingForAJob" type="checkbox"/></div>
