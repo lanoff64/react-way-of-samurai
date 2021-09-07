@@ -57,6 +57,51 @@ const LinksFormFormik = ({initialValues,outEditMode,...props}) => {
 }
 
 
+export const LinksFormFormikAbout = ({initialValues,outEditMode,...props}) => {
+    return (
+        <div   className={classes.formiklinks}>
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values) => {
+                    props.saveContacts(values);
+                    outEditMode();
+                }}
+            >
+                {formik =>
+
+                    (
+                        <Form onSubmit={formik.handleSubmit}>
+                            <div className={classes.nameField}>
+                                <div>О себе: </div>
+                                <div>Ваши скиллы: </div>
+                                <div>Ищу работу: </div>
+
+                            </div>
+
+                            <div className={classes.fieldInpts}>
+                                <div>
+                                    <div><Field name="aboutMe" type="text" placeholder={'расскажите о себе'}/></div>
+                                    <div><Field name="lookingForAJobDescription" type="text" placeholder={'skills'}/></div>
+                                    <div><Field name="lookingForAJob" type="checkbox"/></div>
+                                </div>
+                                <div>
+                                    <button type="submit">Save</button>
+                                    <button onClick={outEditMode}>Cancel</button>
+                                </div>
+
+                            </div>
+
+
+                        </Form>
+                    )}
+
+            </Formik>
+
+        </div>
+    )
+}
+
+
 const LinksForm = ({outEditMode,saveContacts,initialValues,profile}) => {
     return (
         <div>

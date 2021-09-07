@@ -56,7 +56,7 @@ export const profileAPI = {
     },
     saveContacts(profile){
         return instance.put(`profile`, profile);
-    }
+    },
 }
 
 
