@@ -109,6 +109,7 @@ export const LoginFormik = (props) => {
                         <div className={classes.errors}><ErrorMessage name='password'/></div>
                         <div className={classes.errors}>{formik.status}</div>
 
+
                         {
                             (formik.status) ?
                                 (formik.status[0] === 'Incorrect anti-bot symbols') && (

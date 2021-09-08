@@ -101,12 +101,14 @@ export const savePhotoThunk = (file) =>  async (dispatch) => {
 
 }
 
-export const saveContacts = (profile) => {
+export const saveContacts = (profile,setStatus) => {
     return async (dispatch,getState) => {
         const userId = getState().auth.id;
         let response = await profileAPI.saveContacts(profile);
         if (response.data.resultCode === 0) {
             dispatch(getProfileThunk(userId));
+        }else {
+            setStatus(response.data.messages)
         }
     }
 }

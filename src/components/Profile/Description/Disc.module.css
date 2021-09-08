@@ -176,11 +176,6 @@
     margin: 2px 5px 5px 0;
 }
 
-.fieldInpts{
-    display: inline-block;
-    vertical-align:top;
-}
-
 .contactsValues{
     font-style: italic;
     display: inline-block;
@@ -189,4 +184,12 @@
 .aboutValues{
     font-size: 12px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.errors {
+    display: inline-block;
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 10px 0 10px;
 }
