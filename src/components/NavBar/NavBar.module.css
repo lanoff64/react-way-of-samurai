@@ -1,9 +1,7 @@
 .nav {
     grid-area: n;
     background-color: #EDEEF0;
-
     padding: 80px 50px 10px 50px;
-
 }
 
 .item {
@@ -31,8 +29,6 @@
 .navMargin {
     padding: 10px 20px 30px 20px;
     text-shadow: 0 0 1px black;
-
-
 }
 
 .users{
@@ -49,3 +45,8 @@
     color: black;
 }
 
+.navAndFriends {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+}

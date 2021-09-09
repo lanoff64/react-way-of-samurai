@@ -6,7 +6,6 @@
     grid-template-areas:"name about"
                         "avatar about";
     grid-gap: 10px;
-    padding: 5px;
 
 }
 .avaAndDesc button{

@@ -1,22 +1,21 @@
 .mypost {
     padding-top: 20px;
-
 }
 
 .divPost {
-    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3) inset;
-    background-color: steelblue;
-    /*border: 1px solid black;*/
     margin-top: 50px;
-    margin-left: 20px;
     padding-top: 10px;
     padding-bottom: 5px;
-    width: 600px;
+    background-color: white;
+    box-shadow: 0 0 2px black;
 }
 .labelMyPost{
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    background-color: white;
     padding: 10px 0 10px 20px;
+    box-shadow: 0 0 2px black;
 }
+
+
 
 .errors {
     color: red;
@@ -25,6 +24,20 @@
     margin: 0 10px 10px 10px;
 }
 
+.formikForm{
+    display: grid;
+    grid-template-areas: 'textArea textArea'
+                         'textArea button';
+}
+
 .button {
-    margin: 10px 10px 10px 363px;
+    grid-area: button;
+    display: flex;
+    /*justify-content: end;*/
+    /*align-items: end;*/
+    padding-right: 90px;
+}
+
+.textArea{
+    grid-area: textArea;
 }

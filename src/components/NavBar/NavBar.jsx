@@ -10,7 +10,7 @@ const NavBar = (props) => {
 
 
         <nav className={classes.nav}>
-
+            <div className={classes.navAndFriends}>
             <div className={classes.navMargin}>
                 <div className={classes.item}><NavLink to='/profile' activeClassName={classes.activeLink}>
                     Profile</NavLink>
@@ -44,7 +44,7 @@ const NavBar = (props) => {
             </div>
             {mapFriend}
 
-
+            </div>
         </nav>
     );
 }

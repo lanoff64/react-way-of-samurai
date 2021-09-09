@@ -85,18 +85,21 @@ export const getUsersStatus = (userId) => {
 
 export const updateStatus = (status) => {
     return async (dispatch) => {
+        try{
         let response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setUsersStatus(status));
         }
+        } catch (error){
+            alert(error)//dispatch error
+        }
     }
 }
-export const savePhotoThunk = (file) =>  async (dispatch) => {
-        dispatch(toggleIsDownLoad(true));
+export const savePhotoThunk = (file) =>  async (dispatch,getState) => {
+        const userId = getState().auth.id;
         let response = await profileAPI.setMainPhotoApi(file);
-        dispatch(toggleIsDownLoad(false));
         if (response.data.resultCode === 0) {
-            dispatch(setMainPhoto(response.data.data.photos));
+            dispatch(getProfileThunk(userId));
         }
 
 }

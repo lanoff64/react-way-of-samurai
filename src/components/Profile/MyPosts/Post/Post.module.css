@@ -2,9 +2,7 @@
     color: black;
     grid-area: postitem;
     padding: 20px 20px 5px;
-    background-color: skyblue;
-    border: 3px solid white;
-    margin: 20px 100px 20px 10px;
+    margin: 20px 40px;
     box-shadow: 0 0 80px rgba(0, 0, 0, 0.3) inset;
     }
 

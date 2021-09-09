@@ -8,9 +8,18 @@
 }
 
 .app-wrapper-content {
+    max-width: 800px;
     grid-area: c;
-    background-color: white;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3) inset;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
-
+.error{
+    font-size: 40px;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
