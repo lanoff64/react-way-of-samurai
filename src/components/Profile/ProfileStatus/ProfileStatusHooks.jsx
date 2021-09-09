@@ -28,18 +28,22 @@ const ProfileStatusHooks = ({isOwner,...props}) => {
     const handleFocus = (event) => event.target.select();
         return (
 
-            <div>
+            <div className={classes.profileStatusHooks}>
                 {isOwner ?
 
                     <div
                     onDoubleClick={activeEditMode}
                     className={classes.status}>
                     {!editMode &&
-                        <div>
+                        <div className={classes.statusGrid}>
                             <div className={classes.statusArea}>
                                 {props.status || '----'}
                             </div>
-                            <button onClick={activeEditMode}>Смена статуса</button>
+
+                            <div className={classes.profileStatusHooksBtn}>
+                                <button onClick={activeEditMode}>Смена статуса</button>
+                            </div>
+
                         </div>
 
                     }
@@ -56,7 +60,10 @@ const ProfileStatusHooks = ({isOwner,...props}) => {
                             onBlur={deActiveEditMode}
                             value={status}
                         />
-                    <button onClick={deActiveEditMode}>Сохранить</button>
+                        <div>
+                            <button onClick={deActiveEditMode}>Сохранить</button>
+                        </div>
+
                     </div>
                     }
                 </div>

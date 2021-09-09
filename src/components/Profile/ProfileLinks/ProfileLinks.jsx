@@ -5,7 +5,7 @@ import React from "react";
 const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
 
     return(
-        <div>
+        <div className={classes.profileLinks}>
             <div className={classes.nameField}>
 
 
@@ -15,10 +15,13 @@ const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
 
             </div>
 
-            <div>
+
                 {isOwner &&
-                <button className={classes.editBtn} onClick={goToEditMode}>Edit</button>}
-            </div>
+                    <div className={classes.editBtnGrid}>
+                        <button className={classes.editBtn} onClick={goToEditMode}>Edit</button>
+                    </div>
+                }
+
         </div>
 
     )

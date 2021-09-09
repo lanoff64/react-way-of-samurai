@@ -9,6 +9,10 @@
     padding: 5px;
 
 }
+.avaAndDesc button{
+    font-size: 12px;
+    padding: 0;
+}
 .avaImg {
     z-index: 1;
     position: relative;
@@ -52,14 +56,14 @@
 .divDesc {
     margin: 0 auto;
     color: black;
-    padding: 10px;
+    padding-left: 15px;
     font-size: 15px;
 }
 
 .divDescLabel{
     font-size: 14px;
     font-weight: bold;
-    padding-left: 5px;
+    padding: 1px;
 }
 .userDecsName{
     grid-area: name;
@@ -114,6 +118,25 @@
     display: block;
     vertical-align: top;
 }
+
+.formiklinksAbout{
+    padding-left: 20px;
+}
+
+.formiklinksAbout button{
+    margin: 0;
+}
+.nameFieldAbout{
+    font-size: 12px;
+    /*font-weight: bold;*/
+}
+
+
+.nameFieldAbout > div {
+    margin: 0;
+}
+
+
 .selectImg{
     z-index: 2;
     position: absolute;
@@ -154,8 +177,7 @@
     height: 200px;
 }
 .editBtn{
-    left: 0;
-    bottom: 0;
+    margin: 0;
 }
 
 .noInfoContacts{
@@ -170,6 +192,7 @@
     font-weight: bold;
     display: inline-block;
     vertical-align:top;
+    grid-area: nameField;
 }
 
 .nameField > div {
@@ -192,4 +215,25 @@
     font-size: 12px;
     font-style: italic;
     margin: 0 10px 0 10px;
+}
+
+.contactsBtn button{
+    color: white;
+    background-color: black;
+    margin: 0;
+}
+
+.editBtnGrid{
+    grid-area: editBtnGrid;
+    padding-left: 20px;
+}
+
+.profileLinks{
+    display: grid;
+    grid-template-areas: "nameField"
+                        "editBtnGrid";
+}
+
+.aboutSelfEditBtn {
+    padding: 5px 0 0 5px;
 }

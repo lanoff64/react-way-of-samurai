@@ -19,7 +19,7 @@ const AboutSelf = ({profile,isOwner,goToEditModeAbout}) => {
                 <span className={classes.aboutValues}> {profile.lookingForAJob ? 'Да' : 'Нет'}</span>
             </div>
 
-            <div>
+            <div className={classes.aboutSelfEditBtn}>
                 {isOwner &&
                 <button className={classes.editBtn} onClick={goToEditModeAbout}>Edit</button>}
             </div>

@@ -1,6 +1,12 @@
 .status{
     padding: 5px;
 }
+
+.statusGrid{
+    display: grid;
+    grid-template-areas: "statusArea"
+                        'profileStatusHooksBtn';
+}
 .textArea textarea{
     width: 435px;
     height: 90px;
@@ -12,6 +18,7 @@
 }
 
 .statusArea{
+    grid-area: statusArea;
     width: 435px;
     word-wrap:break-word;
     font-style: italic;
@@ -20,3 +27,16 @@
     border: 1px solid rgba(1, 1, 1, 0.1);
     display: inline-block;
 }
+
+
+
+.profileStatusHooksBtn{
+    grid-area: profileStatusHooksBtn;
+    padding-left: 15px;
+
+}
+.profileStatusHooksBtn button{
+    margin: 0;
+}
+
+
