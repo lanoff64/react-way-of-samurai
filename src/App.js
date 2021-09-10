@@ -42,13 +42,13 @@ class App extends React.Component {
                         <Suspense fallback={<Preloader/>}>
                             <Switch>
                                 <Redirect exact from="/" to="/profile"/>
-                                <Redirect exact from='/profile/18286' to='/profile'/>
+                                <Redirect exact from={`/profile/${this.props.authorizedUserId}`}  to='/profile'/>
                                 <Route path='/dialogs'
-                                       render={() => <DialogsContainer/>}/>
+                                       component={() => <DialogsContainer/>}/>
                                 <Route path='/profile/:userId?'
-                                       render={() => <ProfileContainer/>}/>
+                                       component={() => <ProfileContainer/>}/>
                                 <Route path='/users'
-                                       render={() => <UsersContainer/>}/>
+                                       component={() => <UsersContainer/>}/>
                                 <Route path='/music' component={Music}/>
                                 <Route path='/news' component={News}/>
                                 <Route path='/settings' component={Settings}/>
@@ -67,7 +67,8 @@ class App extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    authorizedUserId:state.auth.id,
 })
 
 export default compose(
