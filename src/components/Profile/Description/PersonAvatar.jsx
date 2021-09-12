@@ -37,20 +37,19 @@ const PersonAvatar = ({profile, ...props}) => {
                 </div> :
                 <img src={imgSrc} alt="avatar"/>}
             {props.isOwner ?
-                <div className={classes.settingBtn} >
+                <div className={classes.settingBtn}>
                     <SettingBtn isDownload={props.isDownload} onClick={editModeToggle}/>
                 </div> : null}
             {!editMode && null}
             {editMode &&
             <div>
-                <div className={classes.selectImg}> </div>
+                <div className={classes.selectImg}>{}</div>
                 <div className={classes.avatarInp}>
                     {props.isOwner ?
                         <input type="file" onChange={onMainPhotoSelected}/> : null}
-                        <input type="button" onClick={editModeToggle} value={'отмена'}/>
+                    <input type="button" onClick={editModeToggle} value={'отмена'}/>
                 </div>
             </div>}
-
         </div>
     );
 }

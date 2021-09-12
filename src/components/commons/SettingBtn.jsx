@@ -12,8 +12,6 @@ const SettingBtn =(props)=>{
                     alt={'btn'}
                     onClick={props.onClick}/>
             </div>
-
-
     );
 }
 export default SettingBtn;

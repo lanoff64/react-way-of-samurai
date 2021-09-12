@@ -5,7 +5,7 @@ import ProfileLinks from "../ProfileLinks/ProfileLinks";
 import AboutSelf from "../AboutSelf/AboutSelf";
 import LinksForm, {LinksFormFormikAbout} from "../ProfileLinks/LinksForm";
 
-const PersonInfo = ({profile, status, updateStatus,saveContacts, ...props}) => {
+const PersonInfo = ({profile, status, updateStatus, saveContacts, ...props}) => {
 
     const [editMode, setEditMode] = useState(false);
     const [editModeAbout, setEditModeAbout] = useState(false);
@@ -25,24 +25,21 @@ const PersonInfo = ({profile, status, updateStatus,saveContacts, ...props}) => {
 
     return (
         <div className={classes.about}>
-
             <ProfileStatusHooks isOwner={props.isOwner} status={status} updateStatus={updateStatus}/>
-
             <div className={classes.linksOrForm}>
-
                 {editMode ?
-                    <LinksForm profile={profile} initialValues={profile} saveContacts={saveContacts} outEditMode={outEditMode}/>
+                    <LinksForm profile={profile} initialValues={profile} saveContacts={saveContacts}
+                               outEditMode={outEditMode}/>
                     :
                     <ProfileLinks goToEditMode={goToEditMode} isOwner={props.isOwner} profile={profile}/>}
             </div>
 
             {editModeAbout ?
-                <LinksFormFormikAbout profile={profile} initialValues={profile} saveContacts={saveContacts} outEditMode={outEditModeAbout}/>
+                <LinksFormFormikAbout profile={profile} initialValues={profile} saveContacts={saveContacts}
+                                      outEditMode={outEditModeAbout}/>
                 :
                 <AboutSelf goToEditModeAbout={goToEditModeAbout} isOwner={props.isOwner} profile={profile}/>
             }
-
-
         </div>
     );
 }

@@ -7,8 +7,6 @@ import Preloader from "../commons/Preloader/Preloader";
 
 
 const Profile = ({...props}) => {
-
-
     return (
         <div className={classes.allProfile}>
             <div className={classes.afterWall}>

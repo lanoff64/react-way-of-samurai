@@ -2,14 +2,14 @@ import React, {useEffect, useState} from "react";
 import classes from './ProfileStatus.module.css';
 
 
-const ProfileStatusHooks = ({isOwner,...props}) => {
+const ProfileStatusHooks = ({isOwner, ...props}) => {
 
     let [editMode, setEditMode] = useState(false)
-    let [status,setStatus] = useState(props.status);
+    let [status, setStatus] = useState(props.status);
 
-    useEffect(() =>{
+    useEffect(() => {
         setStatus(props.status);
-    },[props.status] )
+    }, [props.status])
 
     const activeEditMode = () => {
         setEditMode(true);
@@ -26,25 +26,24 @@ const ProfileStatusHooks = ({isOwner,...props}) => {
 
 
     const handleFocus = (event) => event.target.select();
-        return (
+    return (
 
-            <div className={classes.profileStatusHooks}>
-                {isOwner ?
-
-                    <div
+        <div className={classes.profileStatusHooks}>
+            {isOwner ?
+                <div
                     onDoubleClick={activeEditMode}
                     className={classes.status}>
                     {!editMode &&
-                        <div className={classes.statusGrid}>
-                            <div className={classes.statusArea}>
-                                {props.status || '----'}
-                            </div>
-
-                            <div className={classes.profileStatusHooksBtn}>
-                                <button onClick={activeEditMode}>Смена статуса</button>
-                            </div>
-
+                    <div className={classes.statusGrid}>
+                        <div className={classes.statusArea}>
+                            {props.status || '----'}
                         </div>
+
+                        <div className={classes.profileStatusHooksBtn}>
+                            <button onClick={activeEditMode}>Смена статуса</button>
+                        </div>
+
+                    </div>
 
                     }
 
@@ -67,13 +66,13 @@ const ProfileStatusHooks = ({isOwner,...props}) => {
                     </div>
                     }
                 </div>
-                    :
-                    <div className={classes.statusArea}>
-                        {props.status || '----'}
-                    </div> }
+                :
+                <div className={classes.statusArea}>
+                    {props.status || '----'}
+                </div>}
 
-            </div>
-        );
+        </div>
+    );
 
 }
 
