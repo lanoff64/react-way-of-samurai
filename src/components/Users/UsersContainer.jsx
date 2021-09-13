@@ -9,7 +9,6 @@ import {
 
 } from "../../redux/usersReducer";
 import Preloader from "../commons/Preloader/Preloader";
-//import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     setCurrentPageSelector, setFollowingInProgressSelector, setIsFetchSelector,
@@ -70,5 +69,4 @@ export default compose(connect(mapStateToProps, {
         follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers
     }
     ),
-    // withAuthRedirectComponent
 )(UsersContainer);

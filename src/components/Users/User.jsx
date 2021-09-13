@@ -32,7 +32,6 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
 
             </div>
 
-
             <div className={classes.userInfo}>
                 <div className={classes.userNameArea}>
                     Name: {user.name}
@@ -41,11 +40,8 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
                     <div className={classes.userIdArea}>id:{user.id}</div>
                 </div>
 
-
                 <div className={classes.userStatusArea}>
-
                     {user.status != null ? user.status : null}
-
                 </div>
             </div>
 

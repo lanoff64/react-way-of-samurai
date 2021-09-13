@@ -14,11 +14,8 @@ const uploadPhoto = () => {
 const Settings = (props) => {
     return (
         <div className={classes.settings}>
-
             <p>Settings</p>
             <input type="file" id="photo"/>
-
-
             <button onClick={uploadPhoto} >Отправить</button>
         </div>
     );

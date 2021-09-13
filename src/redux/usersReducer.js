@@ -16,14 +16,12 @@ let initialState = {
     currentPage: 1,
     isFetch: false,
     followingInProgress: [],
-    // fake: 10 //for test reselectors
 };
 
 
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        // case "FAKE" : return {...state, fake: state.fake + 1} //test reselecors
         case FOLLOW:
             return {
                 ...state,

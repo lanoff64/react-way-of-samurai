@@ -4,8 +4,6 @@ import Paginator from "../commons/Paginator/Paginator";
 import User from "./User";
 
 const Users = ({unfollow,follow,followingInProgress,currentPage,onPageClick,totalUsersCount,pagesSize,users,...props}) => {
-
-
     return (
         <div>
             <div className={classes.usersAndPaginator}>
@@ -31,9 +29,7 @@ const Users = ({unfollow,follow,followingInProgress,currentPage,onPageClick,tota
                 }
             </div>
         </div>
-
     );
-
 }
 
 export default Users;

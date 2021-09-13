@@ -10,7 +10,6 @@ const Profile = ({...props}) => {
     return (
         <div className={classes.allProfile}>
             <div className={classes.afterWall}>
-
                 {props.isDownload ?
                 <Preloader/> :
                     <div>
