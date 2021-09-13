@@ -7,8 +7,6 @@ const NavBar = (props) => {
     let mapFriend = props.state.map(friend =>
         <UserDialog name={friend.name} key={friend.id} id={friend.id} avatar={friend.avatar}/>);
     return (
-
-
         <nav className={classes.nav}>
             <div className={classes.navAndFriends}>
             <div className={classes.navMargin}>
@@ -39,8 +37,6 @@ const NavBar = (props) => {
                     FRIENDS
 
                 </div>
-
-
             </div>
             {mapFriend}
 

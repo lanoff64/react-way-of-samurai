@@ -7,14 +7,11 @@ const ProfileLinks = ({profile, isOwner,goToEditMode}) => {
     return(
         <div className={classes.profileLinks}>
             <div className={classes.nameField}>
-
-
                 {Object.keys(profile.contacts).map(key =>
                     <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                 )}
 
             </div>
-
 
                 {isOwner &&
                     <div className={classes.editBtnGrid}>
@@ -38,7 +35,6 @@ const Contacts = ({contactTitle, contactValue}) => {
                 <a href={contactValue}>{contactValue}</a>
                 : <span className={classes.noInfoContacts}>no information</span>}
         </div>
-
     </div>
     );
 }

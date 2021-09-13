@@ -5,7 +5,6 @@ import Login from "./Login";
 
 
 class LoginContainer extends React.Component {
-
     render() {
         return (
             <Login {...this.props}/>

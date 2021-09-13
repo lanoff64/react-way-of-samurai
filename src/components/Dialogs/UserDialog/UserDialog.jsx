@@ -4,15 +4,12 @@ import {NavLink} from "react-router-dom";
 
 const UserDialog = (props) => {
     let way = "/dialogs/" + props.id;
-
     return (
         <div className={classes.user}>
-
             <NavLink activeClassName={classes.activeLink} to={way}>
-               <div className={classes.avatar}><img src={props.avatar} alt='avatar'/></div>
-               <div className={classes.name}>{props.name}</div>
+                <div><img src={props.avatar} alt='avatar'/></div>
+                <div className={classes.name}>{props.name}</div>
             </NavLink>
-
         </div>
     );
 }
